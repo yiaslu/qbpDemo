@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jsPlumb-2.0.6.js"></script>
+    <script type="text/javascript">
+        jsPlumb.ready(function () {
+            jsPlumb.importDefaults({
+                DragOptions: { cursor: 'pointer' },	//拖动时鼠标停留在该元素上显示指针，通过css控制
+                PaintStyle: { strokeStyle: '#666' },//元素的默认颜色
+                EndpointStyle: { width: 20, height: 16, strokeStyle: '#666' },//连接点的默认颜色
+                Endpoint: "Rectangle",//连接点的默认形状
+                Anchors: ["TopCenter"]//连接点的默认位置
+            });
+            var exampleDropOptions = {
+                hoverClass: "dropHover",//释放时指定鼠标停留在该元素上使用的css class
+                activeClass: "dragActive"//可拖动到的元素使用的css class
+            };
+
+            var color1 = "#316b31";
+            var exampleEndpoint1 = {
+                endpoint: ["Dot", { radius: 4 }], //设置连接点的形状为圆形
+                paintStyle: { fillStyle: color1 }, //设置连接点的颜色
+                isSource: true, //是否可以拖动（作为连线起点）
+                scope: "green dot", //连接点的标识符，只有标识符相同的连接点才能连接
+                connectorStyle: { strokeStyle: color1, lineWidth: 1 }, //连线颜色、粗细
+                // connector: ["Bezier", { curviness: 63 }], //设置连线为贝塞尔曲线
+                connector: "Flowchart",
+                maxConnections: 1, //设置连接点最多可以连接几条线
+                isTarget: true, //是否可以放置（作为连线终点）
+                dropOptions: exampleDropOptions //设置放置相关的css
+            };
+            var anchors = [[1, 0.2, 1, 0], [0.8, 1, 0, 1], [0, 0.8, -1, 0], [0.2, 0, 0, -1]];
+            var anchors2 = ["LeftMiddle", "RightMiddle"];
+            var maxConnectionsCallback = function (info) {
+                alert("Cannot drop connection " + info.connection.id + " : maxConnections has been reached on Endpoint " + info.endpoint.id);
+            };
+            //  var e1 = jsPlumb.addEndpoint("state2", { anchor: "LeftMiddle" }, exampleEndpoint1);//将exampleEndpoint1类型的点绑定到id为state2的元素上
+            //    e1.bind("maxConnections", maxConnectionsCallback);//也可以在加到元素上之后绑定函数
+
+            jsPlumb.addEndpoint("state2", { anchor: "RightMiddle" }, exampleEndpoint1);
+            jsPlumb.addEndpoint("state2", { anchor: "LeftMiddle" }, exampleEndpoint1);
+            jsPlumb.addEndpoint("state2", { anchor: "TopCenter" }, exampleEndpoint1);
+            jsPlumb.addEndpoint("state2", { anchor: "BottomCenter" }, exampleEndpoint1);//将exampleEndpoint2类型的点绑定到id为state1的元素上，指定活动连接点
+            //  jsPlumb.addEndpoint("state1", exampleEndpoint1);//将exampleEndpoint1类型的点绑定到id为state1的元素上
+
+
+            jsPlumb.addEndpoint("state1", { anchor: "RightMiddle" }, exampleEndpoint1);
+            jsPlumb.addEndpoint("state1", { anchor: "LeftMiddle" }, exampleEndpoint1);
+            jsPlumb.addEndpoint("state1", { anchor: "TopCenter" }, exampleEndpoint1);
+            jsPlumb.addEndpoint("state1", { anchor: "BottomCenter" }, exampleEndpoint1);
+            //将exampleEndpoint2类型的点绑定到id为state3的元素上
+            //  jsPlumb.addEndpoint("state2", { anchor: "LeftMiddle" }, exampleEndpoint1);
+
+
+            jsPlumb.draggable(["state1", "state2"]);
+        });
+
+        function ontest() {
+            debugger;
+            alert(jsPlumb.getAllConnections().length);
+        }
+
+
+    </script>
+    <style>
+        .dragActive {
+            border: 3px dotted orange;
+        }
+
+        .dropHover {
+            border: 6px dotted red;
+        }
+
+        .item {
+            border: 1px solid black;
+            background-color: #ddddff;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+
+        #state1 {
+            left: 100px;
+            top: 100px;
+        }
+
+        #state2 {
+            left: 350px;
+            top: 250px;
+        }
+
+        #state3 {
+            left: 100px;
+            top: 250px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" name="name" onclick="ontest()" value="测试" />
+    <div id="state1" class="item"></div>
+
+    <div id="state2" class="item"></div>
+    <div style="top:151px;left:202px;position:absolute;width:10px;height:10px;background-color:black;"></div>
+</body>
+</html>

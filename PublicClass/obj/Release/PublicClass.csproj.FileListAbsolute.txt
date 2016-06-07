@@ -1,0 +1,6 @@
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PublicClass\bin\Release\PublicClass.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PublicClass\bin\Release\PublicClass.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PublicClass\bin\Release\Newtonsoft.Json.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PublicClass\obj\Release\PublicClass.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PublicClass\obj\Release\PublicClass.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PublicClass\obj\Release\PublicClass.pdb

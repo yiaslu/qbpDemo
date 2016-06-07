@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Script/PageMaster.js"></script>
+    <script type="text/javascript">
+        GetHTMLListHead();
+    </script>
+    <script type="text/javascript">
+        var grid = null;
+        var actionCustomerID;
+        var divid = "FlowStructureEdit", divurl = "FlowManage/FlowEdit.html", w = 1015, h = 572;
+        $(function () {
+            menu = $.ligerMenu({
+                width: 120, items:
+                [
+                { text: '增加', click: itemClick, icon: 'add' },
+                { text: '编辑', click: itemClick, icon: 'edit' },
+                { line: true },
+                { text: '删除', click: itemClick, icon: 'delete' }
+                ]
+            });
+
+            grid = $("#maingrid").ligerGrid({
+                columns: [
+                { display: '流程名称', name: 'flowname', align: 'center', width: 300},
+                { display: '创建日期', name: 'createtime', align: 'center', minWidth: 120, width: 120, type: "date" }
+                ], allowHideColumn: false,
+                toolbar: {
+                    items: [
+                            { text: '增加', click: itemClick, icon: 'add' },
+                            { text: '刷新', click: itemClick, icon: 'refresh' }
+                    ]
+                },
+                width: '100%',
+                rownumbers: true,
+                height: '99%',
+                onContextmenu: function (parm, e) {
+                    actionCustomerID = parm.data.flowid;
+                    menu.show({ top: e.pageY, left: e.pageX });
+                    return false;
+                }
+                ,
+                onDblClickRow: function (data, rowobj, rowobj) {
+                    if (data.flowid != null && data.flowid != "")
+                        window.top.openDialog(divid, "编辑", divurl + "?id=" + data.flowid, w, h, window);
+                }
+            });
+            bindGrid();
+
+            $("#pageloading").hide();
+        });
+        function bindGrid() {
+            var request = new DBRequest("PageBLL.FlowSet", "GetListAll", "PageBLL");
+            request.send(function (ret) {
+                var jsonObj = {};
+                jsonObj.Rows = ret.d;
+                grid.set({ data: jsonObj });
+            });
+        }
+
+        function itemClick() {
+            if (this.text == "增加") {
+                window.top.openDialog(divid, "编辑", divurl, w, h, window);
+            }
+            if (this.text == "刷新") {
+                bindGrid();
+            }
+            if (this.text == "编辑") {
+                if (actionCustomerID != null && actionCustomerID != "")
+                    window.top.openDialog(divid, "编辑", divurl + "?id=" + actionCustomerID, w, h, window);
+            }
+            if (this.text == "删除") {
+                if (actionCustomerID != null && actionCustomerID != "") {
+                    if (confirm("是否确定删除？")) {
+                        var request = new DBRequest("PageBLL.DataSet", "Del", "PageBLL");
+                        request.add("vID", actionCustomerID);
+                        request.send(function (ret) {
+                            bindGrid();
+                        });
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body style="overflow: hidden;">
+    <div id="maingrid" style="margin: 0; padding: 0;">
+    </div>
+</body>
+</html>

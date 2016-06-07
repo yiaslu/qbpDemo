@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <link href="../../lib/ligerUI/skins/Aqua/css/ligerui-all.css" rel="stylesheet" type="text/css" />
+    <script src="../../lib/jquery/jquery-1.9.0.min.js" type="text/javascript"></script> 
+    <script src="../../lib/ligerUI/js/ligerui.all.js"></script>
+    <script type="text/javascript">
+
+       var transition_basic_info;
+       var groupicon = "../../../images/icon/communication.gif";//设备明细表单分组icon
+        $(function(){
+
+            var userTree =[{nodeName:"热轧厂",nodeID:1,nodePid:0},
+                {nodeName:"生产技术科",nodeID:2,nodePid:1},
+                {nodeName:"二级",nodeID:3,nodePid:2},
+                {nodeName:"刘x华",nodeID:4,nodePid:3},
+                {nodeName:"李d",nodeID:7,nodePid:3},
+                {nodeName:"adf",nodeID:5,nodePid:3},
+                {nodeName:"sfsa",nodeID:6,nodePid:3},
+                {nodeName:"自动化",nodeID:8,nodePid:1},
+                {nodeName:"高压班",nodeID:11,nodePid:8},
+                {nodeName:"afda",nodeID:9,nodePid:11},
+                {nodeName:"黄dfds声",nodeID:10,nodePid:11}
+
+            ];
+            var positionTree =[{nodeName:"热轧厂",nodeID:1,nodePid:0},
+                {nodeName:"生产技术科",nodeID:2,nodePid:1},
+                {nodeName:"二级",nodeID:3,nodePid:2},
+                {nodeName:"二级值班",nodeID:4,nodePid:3},
+                {nodeName:"二级技术",nodeID:7,nodePid:3},
+                {nodeName:"adf",nodeID:5,nodePid:3},
+                {nodeName:"sfsa",nodeID:6,nodePid:3},
+                {nodeName:"自动化",nodeID:8,nodePid:1},
+                {nodeName:"高压班",nodeID:11,nodePid:8},
+                {nodeName:"高压甲班",nodeID:9,nodePid:11},
+                {nodeName:"高压乙班",nodeID:10,nodePid:11}
+
+            ];
+            var userTreeJson = JSON.stringify(userTree);
+
+
+
+            //交接班基本信息
+            transition_basic_info = $("#transition_basic_info").ligerForm({
+
+
+                inputWidth: 170, labelWidth: 110, space: 20,
+                fields: [
+
+
+                    { display: "所在部门", name: "department", newline: true,textField:"department", type: "select", group: "交接班基本信息", groupicon: groupicon,editor: {
+                        type: "select",  data: [
+                            {text: "生产技术科", id: 1},
+                            {text: "自动化室", id: 2},
+                            {text: "轧钢车间", id: 3},
+                            {text: "机修车间", id: 4},
+                            {text: "加热车间", id: 5},
+                            {text: "动力车间", id: 6},
+                            {text: "检验站", id: 7},
+                            {text: "成品车间", id: 8}
+                        ]}
+                    },
+
+                    { display: "岗位 ", name: "position", newline: false, textField:"position",id:"",type: "combobox", editor: {
+
+                        selectBoxWidth:400,
+                        selectBoxHeight:600,
+                        textField:"nodeName",
+                        tree:{
+                            data:positionTree,
+                            textFieldName :"nodeName",
+                            idFieldName :'nodeID',
+                            slide : false,
+                            parentIDFieldName :'nodePid',
+                            single:true
+
+                        }
+                    }
+
+                    },
+                    { display: "当班负责人 ", name: "shift_manager", newline: false, textField:"shift_manager",id:"",type: "combobox", editor: {
+
+                        selectBoxWidth:400,
+                        selectBoxHeight:600,
+                        textField:"nodeName",
+                        tree:{
+                            data:JSON.parse(userTreeJson),
+                            textFieldName :"nodeName",
+                            idFieldName :'nodeID',
+                            slide : false,
+                            parentIDFieldName :'nodePid',
+                            single:true
+
+                        }
+                    }
+
+                    },
+
+
+                    { display: "上班时间", name: "start_work_time", newline: true, type: "date", editor: {type: "date",  showTime: true }},
+                    { display: "下班班时间", name: "finish_word_time", newline: false, type: "date", editor: {type: "date",  showTime: true }},
+                    { display: "班别", name: "shift", newline: false, textField: "shift" ,type: "combobox",
+
+                        editor: {type: "combobox",data: [
+                            {text: "甲", id: 1},
+                            {text: "乙", id: 2},
+                            {text: "丙", id: 3},
+                            {text: "丁", id: 4}
+                        ]} },
+                    { display: "班次", name: "work_shift", newline: true,textField: "work_shift", type: "combobox", editor: {type: "combobox", data: [
+                        {text: "白", id: 1},
+                        {text: "中", id: 2},
+                        {text: "夜", id: 3}
+                    ]}},
+                    { display: "应到人数", name: "plan_person", newline: false, type: "digits"},
+                    { display: "实到人数", name: "actual_person", newline: false, type: "digits"},
+                    { display: "检查意见", name: "bug_info", newline: true, type: "textarea", width: 800, editor: {type: "textarea", rows:1, width: 800} }
+
+
+
+                ]
+
+            });
+
+        });
+
+
+    </script>
+
+</head>
+<body>
+<div id="transition_basic_info">
+
+
+</div>
+
+</body>
+</html>

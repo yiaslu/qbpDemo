@@ -1,0 +1,444 @@
+﻿body
+{
+	font-size: 12px;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+a
+{
+	cursor:hand;
+}
+p
+{
+	font-size: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+td
+{
+	font-size: 12px;
+	border-color: #CCCCCC;
+}
+
+input[type=text]
+{
+	font-size: 12px;
+	border: 1px solid #A0B4C5;
+	background-color:Transparent;
+}
+
+input[type=checkbox], input[type=radio]
+{
+	border: 0px solid #CCCCCC;
+	background-color:Transparent;
+}
+
+.inputText
+{
+	font-size: 14px;
+	border: 1px solid #A0B4C5;
+	background-color: Transparent;
+}
+.inputfocus
+{
+	font-size: 12px;
+	border: 1px solid #727272;
+	background-color:#FFFBD5;
+}
+
+.inputblur
+{
+	font-size: 12px;
+	border: 1px solid #A0B4C5;
+	background-color:#FFF;
+}
+
+.inputerror
+{
+	font-size: 12px;
+	border: 1px solid #D5060D;
+	background-color:#FEF5F5
+}
+
+.user
+{
+	width: 140px; 
+	height: 22px; 
+	font-size: 12px;
+	border: 1px solid #999999;
+}
+
+.userfocus
+{
+	width: 140px; 
+	height: 22px; 
+	font-size: 12px;
+	border: 1px solid #727272;
+	background-color:#FFFBD5;
+}
+
+.userok
+{
+	width: 140px; 
+	height: 22px; 
+	font-size: 12px;
+	border: 1px solid #95d741;
+}
+
+.usererror
+{
+	width: 140px; 
+	height: 22px; 
+	font-size: 12px;
+	border: 1px solid #D5060D;
+	background-color:#FEF5F5;
+}
+
+.inputnoborder
+{
+	font-size: 12px;
+	border: 0px solid #A0B4C5;
+	background-color:Transparent;
+}
+
+textarea
+{
+	font-size: 12px;
+}
+
+select
+{
+	font-size: 12px;
+	border: 0px solid #A0B4C5;
+	background-color:#FFF;
+	list-style-type:none;
+}
+
+table
+{
+	border-collapse: collapse;
+	border-color: #CCCCCC;
+}
+
+a:link
+{
+	text-decoration: none;
+}
+
+a:visited
+{
+	text-decoration: none;
+}
+
+a:active
+{
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+a
+{
+	color: #000099;
+}
+
+.p1
+{
+	margin-left: 20px;
+	margin-right: 20px;
+	line-height: 150%;
+}
+
+.noborder
+{
+	border: 0px;
+}
+
+.color1
+{
+	color: #000099;
+}
+
+.color2
+{
+	color: #FF0000;
+}
+
+.title
+{
+	font-size: 12px;
+	font-weight: bold;
+	color: Navy;
+}
+
+.secondtitle
+{
+	font-size: 12px;
+	color: Gray;
+}
+
+.xbutton
+{
+	/* 	background-color: #E7F4F8; 	height: 27px; 	cursor: hand; 	border-left: 1px sold #000000; 	border-right: 1px sold #000000; 	border-top: 1px sold #000000; 	border-bottom: 1px sold #000000; 	font-family: "宋体"; 	font-size: 12px; */
+	height: 25px;
+	border-right: #2C59AA 1px solid;
+	padding-right: 2px;
+	border-top: #2C59AA 1px solid;
+	padding-left: 2px;
+	font-size: 12px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,  StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+	border-left: #2C59AA 1px solid;
+	cursor: hand;
+	color: black;
+	padding-top: 2px;
+	border-bottom: #2C59AA 1px solid;
+	behavior: url(  "../../inc/xbutton.htc" );
+}
+
+.xbutton_mouseover
+{
+	height: 25px;
+	border-right: #2C59AA 1px solid;
+	padding-right: 2px;
+	border-top: #2C59AA 1px solid;
+	padding-left: 2px;
+	font-size: 12px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,  StartColorStr=#ffffff, EndColorStr=#D7E7FA);
+	border-left: #2C59AA 1px solid;
+	cursor: hand;
+	color: black;
+	padding-top: 2px;
+	border-bottom: #2C59AA 1px solid;
+	behavior: url(  "../../inc/xbutton.htc" );
+}
+
+.xbutton_mousedown
+{
+	height: 25px;
+	border-right: #FFE400 1px solid;
+	padding-right: 2px;
+	border-top: #FFE400 1px solid;
+	padding-left: 2px;
+	font-size: 12px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,  StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+	border-left: #FFE400 1px solid;
+	cursor: hand;
+	color: black;
+	padding-top: 2px;
+	border-bottom: #FFE400 1px solid;
+	behavior: url(  "../../inc/xbutton.htc" );
+}
+
+.xbutton_mouseup
+{
+	height: 25px;
+	border-right: #2C59AA 1px solid;
+	padding-right: 2px;
+	border-top: #2C59AA 1px solid;
+	padding-left: 2px;
+	font-size: 12px;
+	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,  StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+	border-left: #2C59AA 1px solid;
+	cursor: hand;
+	color: black;
+	padding-top: 2px;
+	border-bottom: #2C59AA 1px solid;
+	behavior: url(  "../../inc/xbutton.htc" );
+}
+
+/*
+.div
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 3px;
+	background-color: #666666;
+	width: 100%;
+	z-index: 999;
+	display: none;
+}
+*/
+
+.msgdiv
+{
+	background-color: #fffef6;
+	font-size: 12px;
+	border:1px ridge #c3c4bf;
+	z-index:10;
+	line-height:24px;
+	padding-left:5px;
+
+}
+
+.GridViewStyle
+{
+/*
+	border-collapse: collapse;
+	border: #DDDDDD 1px solid;
+
+	table-layout: fixed;
+*/
+	font-size: small;
+	
+	
+	border-right: solid 0px #fff;
+	border-left: solid 0px #fff;
+	border-top: solid 0px #fff;
+	border-bottom: solid 0px #fff;
+}
+
+.HeaderStyle
+{
+/*
+	background-image: url(../../images/icon/gridview_head.gif);
+	background-color: #d1dbe0;  //#DDDDDD;
+*/
+	background-position: top;
+	background-repeat: repeat-x;
+	height: 25px;
+}
+
+.HeaderStyle th
+{
+	padding: 5px;
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.HeaderStyleFixedHead 
+{
+/*
+	background-image: url(../../images/icon/icon/gridview_head.gif);
+	background-color: #d1dbe0;
+   	
+	margin:auto;
+*/
+	background-position:top;
+	background-repeat: repeat-x;
+	position: relative ; 
+    top:expression(this.offsetParent.scrollTop);   
+    height: 25px;
+    z-index: 10;
+}
+
+.HeaderStyleFixedHead th
+{
+/*
+	background-image: url(../../images/icon/xxjl/bg_head.gif);
+	//color: #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-top: 1px solid #fff;
+	
+    overflow:hidden;
+	text-overflow:ellipsis;
+	margin:auto;
+*/	
+	overflow:hidden;
+	text-overflow:ellipsis;
+	padding: 4px 3px;
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.FooterStyleFixedHead
+{
+	background-position:top;
+	background-repeat: repeat-x;
+	position: relative ; 
+    top:expression(this.offsetParent.scrollTop+2);
+    height: 25px;
+    z-index: 10;
+}
+
+.FooterStyleFixedHead td
+{
+/*
+	background-image: url(../../images/icon/xxjl/bg_head.gif);
+	//color: #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-top: 1px solid #fff;
+	
+    overflow:hidden;
+	text-overflow:ellipsis;
+	margin:auto;
+*/	
+	overflow:hidden;
+	text-overflow:ellipsis;
+	padding: 4px 3px;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+.FooterStyle
+{
+/*
+	background-image: url(../../images/icon/xxjl/bg_head.gif);
+	background-color: #fcfcfc;
+*/
+	background-position: top;
+	background-repeat: repeat-x;
+	height: 25px;
+}
+
+.FooterStyle td
+{
+	color: #000000;
+	font-size: 12px;
+	white-space: nowrap;
+	border-left: solid 1px #fff;
+}
+
+
+.RowStyle td, .AlternatingRowStyle td, .RowMouseOverStyle td, .EmptyDataRowStyle td, .SelectedRowStyle td, .EditRowStyle td 
+{
+	border-left: solid 1px #fff;
+    
+	padding-left:5px;
+	padding-right:5px;
+}
+.RowStyle td
+{
+	background-color: White;
+}
+.AlternatingRowStyle td
+{
+	background-color: #F4F8F9; /*background-image: url(../../images/gridview/sprite.gif);     background-position:0 -80px;     background-repeat:repeat-x;*/
+}
+.RowMouseOverStyle td
+{
+	background-color: #FAEBD7;
+}
+.EmptyDataRowStyle td
+{
+}
+
+.SelectedRowStyle td
+{
+/*	
+	background-image: url(../../images/gridview/sprite.gif);
+	background-color: #fcb814;
+	background-position: center;
+	background-repeat: repeat-x;
+*/
+}
+.EditRowStyle td
+{
+	
+}
+
+/*
+按钮背景图片切换样式（空样式BtnBGChange-Js动态赋事件-张威）
+*/
+.BtnBGChange
+{
+}
+

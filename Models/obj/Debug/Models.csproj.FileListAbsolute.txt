@@ -1,0 +1,17 @@
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\Models.dll
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\Models.pdb
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\PublicClass.dll
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\Newtonsoft.Json.dll
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\PublicClass.pdb
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.dll
+D:\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\PublicClass.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\Newtonsoft.Json.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Debug\PublicClass.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\Models.pdb

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>流程图DEMO</title>
+    <!--[if lt IE 9]>
+    <?import namespace="v" implementation="#default#VML" ?>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/codebase/GooFlow.css" />
+    <script type="text/javascript" src="/Script/jquery.min.js"></script>
+    <script type="text/javascript" src="/Script/PageMaster.js"></script>
+    <script type="text/javascript" src='/lib/ligerUI/js/ligerui.all.js'></script>
+    <script type="text/javascript" src='/Script/AjaxBusiness.js'></script>
+    <script type="text/javascript" src="/codebase/Extended.js"></script>
+    <script type="text/javascript" src="/Script/GooFunc.js"></script>
+    <link href="/lib/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/codebase/GooFlow.js"></script>
+    <script type="text/javascript">
+        var property = {
+            width: 800,
+            height: 500,
+            toolBtns: ["start", "end", "task"],
+            haveHead: true,
+            headBtns: ["save", "undo", "redo"], //如果haveHead=true，则定义HEAD区的按钮
+            haveTool: true,
+            haveGroup: false,
+            useOperStack: true
+        };
+        var remark = {
+            cursor: "选择指针",
+            direct: "转换连线",
+            start: "开始结点",
+            end: "结束结点",
+            task: "任务结点"
+        };
+        var demo, modelInfo = null, flowPageNodeList = [];
+        $(document).ready(function () {
+            demo = $.createGooFlow($("#demo"), property);
+            demo.setNodeRemarks(remark);
+            demo.onItemDel = function (id, type) {
+                return confirm("确定要删除该单元吗?");
+            };
+            demo.onBtnSaveClick = function () {
+                var demoData = demo.exportData();
+
+                var addORupdate = modelInfo.flowid != null ? false : true;
+                var request = null;
+                if (addORupdate)
+                    request = new DBRequest("PageBLL.FlowSet", "Insert", "PageBLL");
+                else
+                    request = new DBRequest("PageBLL.FlowSet", "Update", "PageBLL");
+                modelInfo.flowname = document.getElementById("txtvFlowName").value;
+                modelInfo.flownodes = demoData.nodes;
+                modelInfo.flowlines = demoData.lines;
+                modelInfo.flowsets = flowPageNodeList;
+                request.add("info", modelInfo);
+                request.send(function (ret) {
+                    alert("保存成功！");
+                });
+            };
+        });
+
+        $(function () {
+            var request = new DBRequest("PageBLL.FlowSet", "Get", "PageBLL");
+            request.add("vID", HTTPReqeust("id"));
+            request.send(function (ret) {
+                modelInfo = ret.d;
+                if (modelInfo) {
+                    document.getElementById("txtvFlowName").value = modelInfo.flowname;
+                    jsondata = {
+                        title: modelInfo.flowname,
+                        nodes: modelInfo.flownodes ? eval('(' + modelInfo.flownodes + ")") : null,
+                        lines: modelInfo.flowlines ? eval('(' + modelInfo.flowlines + ")") : null
+                    };
+                    if (modelInfo.flowsets) { flowPageNodeList = eval(modelInfo.flowsets); }
+                    demo.loadData(jsondata);
+                }
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        .editTable {
+        }
+
+            .editTable tr td {
+                height: 30px;
+            }
+
+            .editTable .control {
+                text-align: left;
+            }
+    </style>
+</head>
+<body>
+    <div style="width: 800px; height: 500px; float: left;">
+        <div id="demo">
+        </div>
+    </div>
+    <div style="width: 200px; height: 500px; float: left;">
+        <div class="GooFlow" style="width: 198px; height: 498px;">
+            <table border="0" cellpadding="0" cellspacing="0" id="infoSetTable" class="editTable"
+                   style="border: none; padding: 5px;">
+                <tr>
+                    <td>
+                        流程名称：
+                    </td>
+                    <td>
+                        <input type="text" style="width: 120px;" id="txtvFlowName" />
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0" cellpadding="0" cellspacing="0" style="border: none; padding: 5px;"
+                   class="editTable" id="itemSetTable">
+                <tr>
+                    <td>
+                        节点名称：
+                    </td>
+                    <td class="control">
+                        <input type="hidden" id="flowid" value=" " />
+                        <span id="flowname"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        按钮名称：
+                    </td>
+                    <td class="control">
+                        <input type="text" id="flowBtnName" style="width: 120px;" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        操作权限：
+                    </td>
+                    <td class="control">
+                        <input type="checkbox" id="flowisEndDel" />提交后可删除<br />
+                        <input type="checkbox" id="flowisEndUpdate" />提交后可修改<br />
+                        <input type="checkbox" id="flowisUpdate" />修改<br />
+                        <input type="checkbox" id="flowisDelete" />删除<br />
+                        <input type="checkbox" id="flowisRevoke" />撤销<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        操作影响：
+                    </td>
+                    <td class="control">
+                        <input type="button" value="设置" />
+                        <input type="hidden" id="flowexecInfluence" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        操作人：
+                    </td>
+                    <td class="control">
+                        <input type="button" value="设置" />
+                        <input type="hidden" id="flowexecOperator" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        是否退回：
+                    </td>
+                    <td class="control">
+                        <input type="checkbox" id="flowisReturn" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        流转描述：
+                    </td>
+                    <td class="control">
+                        <input type="checkbox" id="flowisDescription" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        流转条件：
+                    </td>
+                    <td class="control">
+                        <input type="button" value="设置" />
+                        <input type="hidden" id="flownextCondition" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        子流程：
+                    </td>
+                    <td class="control">
+                        <input type="button" value="设置" />
+                        <input type="hidden" id="flowsonFlow" value="" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

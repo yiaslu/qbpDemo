@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Script/PageMaster.js"></script>
+    <script type="text/javascript">
+        GetHTMLListHead();
+    </script>
+    <script type="text/javascript">
+        var grid = null;
+        var actionCustomerID;
+        var divid = "DataColumnList", divurl = "DataManage/DataColumnEdit.html", w = 350, h = 500;
+        $(function () {
+            menu = $.ligerMenu({
+                width: 120, items:
+                [
+                { text: '编辑', click: itemClick, icon: 'edit' },
+                { line: true },
+                { text: '删除', click: itemClick, icon: 'delete' }
+                ]
+            });
+
+            grid = $("#maingrid").ligerGrid({
+                columns: [
+                { display: '列名称', name: 'colname', align: 'center', minWidth: 120, width: 100 },
+                { display: '数据列名称', name: 'colcode', align: 'left', minWidth: 120 },
+                { display: '列类型', name: 'coltype', align: 'left', width: 120 },
+                { display: '长度', name: 'length', align: 'left', width: 40 },
+                {
+                    display: '是否为空', name: 'isnull', align: 'center', width: 80, render: function (rowdata, rowindex, value) {
+                        return value ? "√" : "×";
+                    }
+                },
+                {
+                    display: '是否是主键', name: 'isprimary', align: 'center', width: 80, render: function (rowdata, rowindex, value) {
+                        return value ? "√" : "×";
+                    }
+                },
+                {
+                    display: '列表页面显示', name: 'listshow', align: 'center', width: 80, render: function (rowdata, rowindex, value) {
+                        return value ? "√" : "×";
+                    }
+                },
+                {
+                    display: '向上', name: 'listorder', align: 'center', width: 80, render: function (rowdata, rowindex, value) {
+                        if (rowindex <= 1)
+                            return "";
+                        return "<a href='#' onclick='uporder(" + value + ")' style='text-decoration:none;'>&nbsp;[&nbsp;↑&nbsp;]&nbsp;</a>" ;
+                    }
+                },
+                {
+                    display: '向下', name: 'listorder', align: 'center', width: 80, render: function (rowdata, rowindex, value) {
+                        if ((rowindex + 1) == grid.recordNumber || rowindex == 0)
+                            return "";
+                        return "<a href='#' onclick='downorder(" + value + ")' style='text-decoration:none;'>&nbsp;[&nbsp;↓&nbsp;]&nbsp;</a>";
+                    }
+                }
+                ], allowHideColumn: false,
+                toolbar: {
+                    items: [
+                            { text: '增加列', click: itemClick, icon: 'add' },
+                            { text: '刷新', click: itemClick, icon: 'refresh' }
+                    ]
+                },
+                width: '100%',
+                rownumbers: true,
+                height: '99%',
+                onContextmenu: function (parm, e) {
+                    actionCustomerID = parm.data.colid;
+                    menu.show({ top: e.pageY, left: e.pageX });
+                    return false;
+                }
+                ,
+                onDblClickRow: function (data, rowobj, rowobj) {
+                    if (data.colid != null && data.colid != "" && data.colid != 1)
+                        window.top.openDialog(divid, "编辑", divurl + "?id=" + data.colid + "&tid=" + HTTPReqeust("id"), w, h, window);
+                }
+            });
+            bindGrid();
+
+            $("#pageloading").hide();
+        });
+        function bindGrid() {
+            var request = new DBRequest("PageBLL.DataSet", "GetListColumn", "PageBLL");
+            request.add("tableid", HTTPReqeust("id"));
+            request.add("oname", 'ltb');
+            request.send(function (ret) {
+                var jsonObj = {};
+                jsonObj.Rows = ret.d;
+                grid.set({ data: jsonObj });
+            });
+        }
+
+        function uporder(order) {
+            var request = new DBRequest("PageBLL.DataSet", "UpOrder", "PageBLL");
+            request.add("order", order);
+            request.add("tableid", HTTPReqeust("id"));
+            request.add("oname", 'ltb');
+            request.send(function (ret) {
+                bindGrid();
+            });
+        }
+        function downorder(order) {
+            var request = new DBRequest("PageBLL.DataSet", "DownOrder", "PageBLL");
+            request.add("order", order);
+            request.add("tableid", HTTPReqeust("id"));
+            request.add("oname", 'ltb');
+            request.send(function (ret) {
+                bindGrid();
+            });
+        }
+
+        function itemClick() {
+            if (this.text == "增加列") {
+                window.top.openDialog(divid, "编辑", divurl + "?tid=" + HTTPReqeust("id"), w, h, window);
+            }
+            if (this.text == "刷新") {
+                bindGrid();
+            }
+            if (this.text == "编辑") {
+                if (actionCustomerID != null && actionCustomerID != "" && actionCustomerID != 1)
+                    window.top.openDialog(divid, "编辑", divurl + "?id=" + actionCustomerID + "&tid=" + HTTPReqeust("id"), w, h, window);
+            }
+            if (this.text == "删除") {
+                if (actionCustomerID != null && actionCustomerID != "" && actionCustomerID != 1) {
+                    if (confirm("是否确定删除？")) {
+                        var request = new DBRequest("PageBLL.DataSet", "DeleteColumn", "PageBLL");
+                        request.add("ID", actionCustomerID);
+                        request.add("tableid", HTTPReqeust("id"));
+                        request.send(function (ret) {
+                            bindGrid();
+                        });
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body style="overflow: hidden;">
+    <div id="maingrid" style="margin: 0; padding: 0;">
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿[
+    { "colid": 1, "colname": "主键", "colcode": "tid", "coltype": "int", "length": null, "isnull": false, "isprimary": true, "coldefault": null, "order": 1, "show": null, "listorder": 1, "listshow": null, "control": null },
+    { "colid": 2, "colname": "部门", "colcode": "dep", "coltype": "varchar", "length": 50, "isnull": true, "isprimary": null, "coldefault": null, "order": 2, "show": true, "listorder": 2, "listshow": null, "control": "text" },
+    { "colid": 6, "colname": "请假事由", "colcode": "message", "coltype": "varchar", "length": 200, "isnull": true, "isprimary": null, "coldefault": null, "order": 7, "show": true, "listorder": 3, "listshow": null, "control": "text" },
+    { "colid": 3, "colname": "姓名", "colcode": "username", "coltype": "varchar", "length": 50, "isnull": true, "isprimary": null, "coldefault": null, "order": 3, "show": true, "listorder": 2, "listshow": true, "control": "text" },
+    { "colid": 4, "colname": "请假开始日期", "colcode": "sdate", "coltype": "smalldatetime", "length": 0, "isnull": true, "isprimary": null, "coldefault": null, "order": 5, "show": true, "listorder": 4, "listshow": true, "control": "date" },
+    { "colid": 5, "colname": "请假结束日期", "colcode": "edate", "coltype": "smalldatetime", "length": 0, "isnull": true, "isprimary": null, "coldefault": null, "order": 6, "show": true, "listorder": 5, "listshow": true, "control": "date" },
+    { "colid": 7, "colname": "请假类型", "colcode": "leavetype", "coltype": "varchar", "length": 4, "isnull": true, "isprimary": null, "coldefault": "年假|调休|事假|病假|其它", "order": 4, "show": true, "listorder": 6, "listshow": true, "control": "radio" }
+]

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PageTest</title>
+
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--basic styles-->
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+      <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!--page specific plugin styles-->
+    <!--fonts-->
+    <!--ace styles-->
+    <link rel="stylesheet" href="assets/css/ace.min.css" />
+
+    <link rel="stylesheet" href="assets/css/ace-responsive.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css" /> <!---->
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <script src="assets/js/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/vendor/json2.js"></script>
+    <script src="inc/AjaxBusiness.js"></script>
+    <script src="inc/aceTable.js"></script>
+    <script type="text/javascript">
+        function test() {
+            var request = new DBRequest("PageBLL.test", "Get", "PageBLL");
+            request.send(function (ret) {
+                alert(ret.d);
+            });
+        }
+
+        var tTable = new aceTable("pageTable");
+        function test1() {
+            tTable = new aceTable("pageTable");
+            //tTable.checkCol = true;
+            tTable.indexCol = true;
+            tTable.cols.push(new Cols(null, '1', '', 'col1', '', function (t) {
+                var retValue = t;
+                if (t.indexOf('一') != -1) {
+                    retValue = ' <span class="label label-warning">' + t + "</span>";
+                }
+                return retValue;
+            }));
+            tTable.cols.push(new Cols(null, '2', '', 'col2', '', null));
+            tTable.cols.push(new Cols(null, '3', '<span style="color:red">3</span>', 'col3', '', null));
+            tTable.cols.push(new Cols(null, '4', '', 'col4', '', null));
+
+            //设置表格操作功能必须为对象的name赋变量名称
+            tTable.name = "tTable";
+            tTable.itemget = function (btn) {
+                var item = tTable.GetItemByBtn(btn);
+                alert("查看" + item.col1);
+            }
+            tTable.itemupdate = function (btn) {
+                var item = tTable.GetItemByBtn(btn);
+                alert("修改" + item.col1);
+            }
+            tTable.itemdelete = function (btn) {
+                var item = tTable.GetItemByBtn(btn);
+                alert("删除" + item.col1);
+            }
+            tTable.initCreate();
+        }
+        function test2() {
+            tTable.items.push({ 'col1': '第一行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.items.push({ 'col1': '第二行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.items.push({ 'col1': '第三行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.items.push({ 'col1': '第四行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.items.push({ 'col1': '第五行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.items.push({ 'col1': '第六行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.items.push({ 'col1': '第七行', 'col2': '第二列', 'col3': '3', 'col4': '4' });
+            tTable.DataBind();
+        }
+    </script>
+</head>
+<body>
+    <input type="button" name="btnTest" onclick="test();" value="测试后台ajax" />
+    <input type="button" name="btnTest" onclick="test1();" value="测试table" />
+    <input type="button" name="btnTest" onclick="test2();" value="测试tableBand" />
+    
+    <div id="pageTable"></div>
+</body>
+</html>

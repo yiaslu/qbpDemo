@@ -1,0 +1,8 @@
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Release\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Release\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Release\PublicClass.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Release\Newtonsoft.Json.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\bin\Release\PublicClass.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Release\Models.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Release\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Release\Models.pdb

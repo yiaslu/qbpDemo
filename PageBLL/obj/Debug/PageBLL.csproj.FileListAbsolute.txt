@@ -1,0 +1,14 @@
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\PageBLL.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\PageBLL.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\DBHelp.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\PublicClass.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\Newtonsoft.Json.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\DBHelp.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\bin\Debug\PublicClass.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\obj\Debug\PageBLL.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\obj\Debug\PageBLL.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\obj\Debug\PageBLL.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\PageBLL.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\PageBLL.pdb

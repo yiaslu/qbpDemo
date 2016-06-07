@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Script/PageMaster.js"></script>
+    <script type="text/javascript">
+        GetHTMLEditHead();
+    </script>
+</head>
+<body>
+    <form id="form1" class="liger-form" data-validate="{}">
+        <div class="fields">
+            <input data-type="text" data-label="列名称" name="colname" validate="{required:true}" />
+            <input data-type="text" data-label="数据列名称" name="colcode" validate="{required:true}" />
+            <div data-label="列类型" data-type="select" data-name="coltype" validate="{required:true}">
+                <input class="editor" data-textfield="name" data-valuefield="name" />
+            </div>
+            <input data-type="number" data-label="长度" name="length" validate="{required:true}" />
+            <input data-type="checkbox" data-label="是否为空" name="isnull" />
+            <div data-label="表单控件" data-type="select" data-name="control">
+                <input class="editor" data-textfield="name" data-valuefield="name" />
+            </div>
+            <input data-type="checkbox" data-label="编辑显示" name="show" />
+            <input data-type="checkbox" data-label="列表显示" name="listshow" />
+            <input data-type="textarea" data-label="默认值" name="coldefault" />
+        </div>
+        <div class="buttons">
+            <input data-text="保存" data-click="f_save" data-width="60" />
+            <input data-text="关闭" data-click="f_close" data-width="60" />
+        </div>
+    </form>
+    <script type="text/javascript">
+        var modelInfo = null;
+        $(function () {
+            liger.get("coltype").setData([
+                { name: "varchar" },
+                { name: "int" },
+                { name: "decimal" },
+                { name: "datetime" },
+                { name: "smalldatetime" },
+                { name: "char" },
+                { name: "nvarchar" }]);
+            liger.get("control").setData([
+                { name: "text" },
+                { name: "pwd" },
+                { name: "imgtxt" },
+                { name: "check" },
+                { name: "radio" },
+                { name: "tref" },
+                { name: "textmod" },
+                { name: "date" },
+                { name: "select" }]);
+
+            var request = new DBRequest("PageBLL.DataSet", "GetColumn", "PageBLL");
+            request.add("tableid", HTTPReqeust("tid"));
+            request.add("colid", HTTPReqeust("id"));
+            request.send(function (ret) {
+                modelInfo = ret.d;
+                if (modelInfo.isnull == null) {
+                    modelInfo.isnull = true;
+                }
+                if (modelInfo.coldefault == null)
+                    modelInfo.coldefault = "";
+                f_get();
+            });
+        });
+        function f_get() {
+            var form = liger.get("form1");
+            form.setData(modelInfo);
+            if (modelInfo.tabletype == null || modelInfo.tabletype == "") {
+                modelInfo.tabletype = HTTPReqeust("type");
+            }
+            //if (modelInfo.vTableName != null)
+            //    form.getEditor("vTableName").setDisabled();
+        }
+        function f_save() {
+            var form = liger.get("form1");
+            if (!form.valid()) {
+                form.showInvalid();
+                return;
+            }
+            var data = form.getData();
+            var addORupdate = modelInfo.colid != null ? false : true;
+            CopyModelToModel(data, modelInfo);
+            modelInfo.vColumnList = null;
+            var request = null;
+            if (addORupdate)
+                request = new DBRequest("PageBLL.DataSet", "AddColumn", "PageBLL");
+            else
+                request = new DBRequest("PageBLL.DataSet", "UpdateColumn", "PageBLL");
+            request.add("info", modelInfo);
+            request.add("tableid", HTTPReqeust("tid"));
+            request.send(function (ret) {
+                alert("保存成功!");
+                frameElement.dialog.get('opener').bindGrid();
+                frameElement.dialog.close();
+            });
+        }
+        function f_close() {
+            frameElement.dialog.get('opener').bindGrid();
+            frameElement.dialog.close();
+        }
+
+    </script>
+</body>
+</html>

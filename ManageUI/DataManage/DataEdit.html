@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../Script/PageMaster.js"></script>
+    <script type="text/javascript">
+        GetHTMLEditHead();
+    </script>
+</head>
+<body>
+    <form id="form1" class="liger-form" data-validate="{}">
+        <div class="fields">
+            <input data-type="text" data-label="结构名称" name="tablename" validate="{required:true}" />
+            <input data-type="text" data-label="表名称" name="tablecode" validate="{required:true}" />
+        </div>
+        <div class="buttons">
+            <input data-text="保存" data-click="f_save" data-width="60" />
+            <input data-text="关闭" data-click="f_close" data-width="60" />
+        </div>
+    </form>
+    <script type="text/javascript">
+        var modelInfo = null;
+        $(function () {
+            var request = new DBRequest("PageBLL.DataSet", "Get", "PageBLL");
+            var id = HTTPReqeust("id");
+            request.add("vID", HTTPReqeust("id"));
+            request.send(function (ret) {
+                modelInfo = ret.d;
+                f_get();
+            });
+        });
+        function f_get() {
+            var form = liger.get("form1");
+            form.setData(modelInfo);
+            if (modelInfo.tabletype == null || modelInfo.tabletype == "") {
+                modelInfo.tabletype = HTTPReqeust("type");
+            }
+            //if (modelInfo.vTableName != null)
+            //    form.getEditor("vTableName").setDisabled();
+        }
+        function f_save() {
+            var form = liger.get("form1");
+            if (!form.valid()) {
+                form.showInvalid();
+                return;
+            }
+            var data = form.getData();
+            var addORupdate = modelInfo.tableid != null ? false : true;
+            CopyModelToModel(data, modelInfo);
+            var request = null;
+            if (addORupdate)
+                request = new DBRequest("PageBLL.DataSet", "Insert", "PageBLL");
+            else
+                request = new DBRequest("PageBLL.DataSet", "Update", "PageBLL");
+            request.add("info", modelInfo);
+            request.send(function (ret) {
+                alert("保存成功!");
+                frameElement.dialog.get('opener').bindGrid();
+                frameElement.dialog.close();
+            });
+        }
+        function f_close() {
+            frameElement.dialog.get('opener').bindGrid();
+            frameElement.dialog.close();
+        }
+
+    </script>
+</body>
+</html>

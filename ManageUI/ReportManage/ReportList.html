@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="managejs/editfunc.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var sysPath = "";
+    </script>
+    <script src="../lib/funcs.js"></script>
+    <script type="text/javascript" src="managejs/editfunc.js"></script>
+    <script type="text/javascript" src="managejs/Designer.js"></script>
+    <script type="text/javascript">
+
+        function myclose() {
+            msg = '关闭表单设计器前，保存对表单的修改？';
+            if (window.confirm(msg)) {
+                document.formToolbar.url.value = "";
+                Save();
+            }
+            else
+                window.close();
+        }
+
+        function opendrbddiv() {
+            //window.top.OpenDiv("Div_Msg", 300, 100, "导入表单", '../../ManageXt/Gzmb/OpenImport.aspx?mbbh=<%=Request["mbbh"] %>', window);
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-image: ">
+        <tr class="toolbar">
+            <td style="white-space: nowrap;" width="120px">
+                <b>表单设计</b>
+            </td>
+            <td valign="middle">
+                <table cellspacing="0" cellpadding="0" width="550px" border="0px">
+                    <tbody>
+                        <tr>
+                            <td style="padding-left: 3px" height="31">
+                                <!--多媒体状态工具栏-->
+                                <div class="toobar">
+                                    <div class="icons tble">
+                                        <a class="icoCut" title="剪切" onclick="format('Cut');return false;" href="javascript:void(0)">
+                                        </a><a class="icoCpy" title="复制" onclick="format('Copy');return false;" href="javascript:void(0)">
+                                        </a><a class="icoPse" title="粘贴" onclick="format('Paste');return false;" href="javascript:void(0)">
+                                        </a>
+                                        <div class="sepline">
+                                        </div>
+                                        <a class="icoFfm" id="imgFontface" title="字体" onclick="fGetEv(event);fDisplayElement('fontface','');return false;"
+                                           href="javascript:void(0)"></a><a class="icoFsz" id="imgFontsize" title="字号" onclick="fGetEv(event);fDisplayElement('fontsize','');return false;"
+                                                                            href="javascript:void(0)"></a><a class="icoWgt" title="加粗" onclick="format('Bold');return false;"
+                                                                                                             href="javascript:void(0)"></a><a class="icoIta" title="斜体" onclick="format('Italic');return false;"
+                                                                                                                                              href="javascript:void(0)"></a><a class="icoUln" title="下划线" onclick="format('Underline');return false;"
+                                                                                                                                                                               href="javascript:void(0)"></a><a class="icoFcl" id="imgFontColor" title="字体颜色" onclick="foreColor(event);return false;"
+                                                                                                                                                                                                                href="javascript:void(0)"></a><a class="icoAgn" id="imgAlign" title="对齐" onclick="fGetEv(event);fDisplayElement('divAlign','');return false;"
+                                                                                                                                                                                                                                                 href="javascript:void(0)"></a><a class="icoLst" id="imgList" title="编号" onclick="fGetEv(event);fDisplayElement('divList','');return false;"
+                                                                                                                                                                                                                                                                                  href="javascript:void(0)"></a><a class="icoOdt" id="imgInOut" title="缩进" onclick="fGetEv(event);fDisplayElement('divInOut','');return false;"
+                                                                                                                                                                                                                                                                                                                   href="javascript:void(0)"></a>
+                                        <div class="sepline">
+                                        </div>
+                                        <a class="icoUrl" title="超链接" onclick="createLink();return false;" href="javascript:void(0)">
+                                        </a><a class="icoImg" title="增加图片" onclick="createImg()" href="javascript:void(0)">
+                                        </a>
+                                        <div class="sepline">
+                                        </div>
+                                        <a class="icoTable" title="表格" onclick="createTable();return false;" href="javascript:void(0)">
+                                        </a>
+                                        <input type="checkbox" name="switchMode" language="javascript" onclick="setMode(this.checked)"
+                                               onmouseout="fHideTip()" onmouseover="fSetModeTip(this)" style="vertical-align: bottom">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="eMenu" id="fontface" style="display: none; z-index: 99; left: 2px; width: 110px;
+        top: 35px; height: 230px">
+        <a class="n" style="font: 12px '宋体'" onclick="fontname(this)" href="javascript:void(0)">
+            宋体
+        </a><a class="n" style="font: 12px '黑体'" onclick="fontname(this)" href="javascript:void(0)">黑体</a><a class="n" style="font: 12px '楷体_GB2312'" onclick="fontname(this)" href="javascript:void(0)">楷体_GB2312</a><a class="n" style="font: 12px '隶书'" onclick="fontname(this)" href="javascript:void(0)">隶书</a><a class="n" style="font: 12px '幼圆'" onclick="fontname(this)" href="javascript:void(0)">幼圆</a><a class="n" style="font: 12px Arial" onclick="fontname(this)" href="javascript:void(0)">Arial</a><a class="n" style="font: 12px 'Arial Narrow'" onclick="fontname(this)" href="javascript:void(0)">
+            Arial
+            Narrow
+        </a><a class="n" style="font: 12px 'Arial Black'" onclick="fontname(this)"
+               href="javascript:void(0)">Arial Black</a><a class="n" style="font: 12px 'Comic Sans MS'"
+                                                           onclick="fontname(this)" href="javascript:void(0)">Comic Sans MS</a><a class="n"
+                                                                                                                                  style="font: 12px Courier" onclick="fontname(this)" href="javascript:void(0)">Courier</a><a class="n" style="font: 12px System" onclick="fontname(this)" href="javascript:void(0)">System</a><a class="n" style="font: 12px 'Times New Roman'" onclick="fontname(this)" href="javascript:void(0)">
+            Times
+            New Roman
+        </a><a class="n" style="font: 12px Verdana" onclick="fontname(this)" href="javascript:void(0)">Verdana</a>
+    </div>
+    <div class="eMenu" id="fontsize" style="display: none; left: 26px; width: 125px;
+        top: 35px; height: 170px">
+        <a class="n" style="font-size: xx-small; line-height: 120%" onclick="fontsize(1,this)"
+           href="javascript:void(0)">极小</a> <a class="n" style="font-size: x-small; line-height: 120%"
+                                               onclick="fontsize(2,this)" href="javascript:void(0)">特小</a> <a class="n" style="font-size: small;
+                    line-height: 120%" onclick="fontsize(3,this)" href="javascript:void(0)">小</a>
+        <a class="n" style="font-size: medium; line-height: 120%" onclick="fontsize(4,this)"
+           href="javascript:void(0)">中</a> <a class="n" style="font-size: large; line-height: 120%"
+                                              onclick="fontsize(5,this)" href="javascript:void(0)">大</a> <a class="n" style="font-size: x-large;
+                    line-height: 120%; height: 25px" onclick="fontsize(6,this)" href="javascript:void(0)">
+            特大
+        </a> <a class="n" style="font-size: xx-large; line-height: 140%; height: 35px"
+                onclick="fontsize(7,this)" href="javascript:void(0)">极大</a>
+    </div>
+    <div class="eMenu" id="divList" style="display: none; left: 26px; width: 60px; top: 35px;
+        height: 40px">
+        <a class="n" onclick="format('Insertorderedlist');fHide(this.parentNode)" href="javascript:void(0)">
+            数字列表
+        </a><a class="n" onclick="format('Insertunorderedlist');fHide(this.parentNode)"
+               href="javascript:void(0)">符号列表</a>
+    </div>
+    <div class="eMenu" id="divAlign" style="display: none; left: 26px; width: 60px; top: 35px;
+        height: 60px">
+        <a class="n" onclick="format('Justifyleft');fHide(this.parentNode)" href="javascript:void(0)">
+            左对齐
+        </a><a class="n" onclick="format('Justifycenter');fHide(this.parentNode)" href="javascript:void(0)">居中对齐</a><a class="n" onclick="format('Justifyright');fHide(this.parentNode)" href="javascript:void(0)">右对齐</a>
+    </div>
+    <div class="eMenu" id="divInOut" style="display: none; left: 26px; width: 60px; top: 35px;
+        height: 40px">
+        <a class="n" onclick="format('Indent');fHide(this.parentNode)" href="javascript:void(0)">
+            增加缩进
+        </a><a class="n" onclick="format('Outdent');fHide(this.parentNode)" href="javascript:void(0)">减少缩进</a>
+    </div>
+    <div class="eMenu" id="dvForeColor" style="display: none; left: 26px; width: 90px;
+        top: 35px">
+        <a class="n cs fRd1" onclick="format(gSetColorType,'#800000')" href="javascript:void(0)">
+            <b class="cb"></b><span>暗红色</span>
+        </a> <a class="n cs fRd2" onclick="format(gSetColorType,'#800080')"
+                href="javascript:void(0)"><b class="cb"></b><span>紫色</span></a> <a class="n cs fRd3"
+                                                                                   onclick="format(gSetColorType,'#F00000')" href="javascript:void(0)">
+            <b class="cb">
+            </b><span>红色</span>
+        </a> <a class="n cs fRd4" onclick="format(gSetColorType,'#F000F0')"
+                href="javascript:void(0)"><b class="cb"></b><span>鲜粉色</span></a>
+        <a class="n cs fBu1" onclick="format(gSetColorType,'#000080')" href="javascript:void(0)">
+            <b class="cb"></b><span>深蓝色</span>
+        </a> <a class="n cs fBu2" onclick="format(gSetColorType,'#0000F0')"
+                href="javascript:void(0)"><b class="cb"></b><span>蓝色</span></a> <a class="n cs fBu3"
+                                                                                   onclick="format(gSetColorType,'#00F0F0')" href="javascript:void(0)">
+            <b class="cb">
+            </b><span>湖蓝色</span>
+        </a> <a class="n cs fGn1" onclick="format(gSetColorType,'#008080')"
+                href="javascript:void(0)"><b class="cb"></b><span>蓝绿色</span></a>
+        <a class="n cs fGn2" onclick="format(gSetColorType,'#008000')" href="javascript:void(0)">
+            <b class="cb"></b><span>绿色</span>
+        </a> <a class="n cs fGn3" onclick="format(gSetColorType,'#808000')"
+                href="javascript:void(0)"><b class="cb"></b><span>橄榄色</span></a> <a class="n cs fGn4"
+                                                                                    onclick="format(gSetColorType,'#00F000')" href="javascript:void(0)">
+            <b class="cb">
+            </b><span>浅绿色</span>
+        </a> <a class="n cs fYl1" onclick="format(gSetColorType,'#F0C000')"
+                href="javascript:void(0)"><b class="cb"></b><span>橙黄色</span></a>
+        <a class="n cs fBk1" onclick="format(gSetColorType,'#000000')" href="javascript:void(0)">
+            <b class="cb"></b><span>黑色</span>
+        </a> <a class="n cs fBk2" onclick="format(gSetColorType,'#808080')"
+                href="javascript:void(0)"><b class="cb"></b><span>灰色</span></a> <a class="n cs fBk3"
+                                                                                   onclick="format(gSetColorType,'#C0C0C0')" href="javascript:void(0)">
+            <b class="cb">
+            </b><span>银色</span>
+        </a> <a class="n cs fWt0" onclick="format(gSetColorType,'#FFFFFF')"
+                href="javascript:void(0)"><b class="cb"></b><span>白色</span></a>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr id="tr1">
+            <td style="white-space: nowrap;" width="120px" valign="top">
+                <table border="0" cellspacing="0" cellpadding="0" width="120px">
+                    <tr>
+                        <td align="center" style="white-space: nowrap;" height="30px">
+                            <b>保存与退出</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <!--<button style="width: 120px; height: 26px; text-align: left" onclick="Save()">
+                                <img src="../../images/icon/save.gif" height="16" width="16" align="absmiddle">&nbsp;保存表单
+                            </button>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <!--<button style="width: 120px; height: 26px; text-align: left" onclick="myclose()">
+                                <img src="../../images/icon/refresh.jpg" height="16" width="16" align="absmiddle">&nbsp;关闭设计器
+                            </button>-->
+                        </td>
+                    </tr>
+                </table>
+                <form name="formToolbar" method="post" enctype="multipart/form-data" action="Save.aspx">
+                    <input type="hidden" name="InputItems" value="" />
+                    <input type="hidden" name="ReportHtml" value="" />
+                    <input type="hidden" name="url" id="url" value="SetModel.aspx" />
+                    <input type="hidden" name="isImport" id="isImport" value="false" />
+                    <input type="hidden" name="bdbh" value="" />
+                </form>
+            </td>
+            <td width="100%">
+                <iframe id="frameReport" frameborder="0" style="background-color: buttonface;" src="ReportEdit.html"
+                    width="100%" height="580px" onload="frameReport.document.body.contentEditable=true;"
+                    name="frameReport">
+                </iframe>
+       
+            </td>
+        </tr>
+        <tr bgcolor="#DDDDDD" id="tr2" style="display: none">
+            <td bgcolor="#DDDDDD" width="100%" colspan="2">
+                <textarea id="sourceEditor" style="height: 580px; width: 100%;">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
