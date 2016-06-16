@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="../lib/css/bootstrap.css" rel="stylesheet" />
+    <link href="../lib/css/style.css" rel="stylesheet" />
+    <script src="../lib/jquery/jquery-1.9.0.min.js"></script>
+    <script src="../lib/editor-ace/src/ace.js"></script>
+    <script src="../Script/PageMaster.js"></script>
+    <script type="text/javascript">
+        GetHTMLListHead();
+    </script>
+
+    <style type="text/css">
+        #aceEditor {
+            margin: 0;
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            border: 1px solid #d4d4d4;
+            box-shadow: 2px 2px 5px #d3d6da;
+            border-radius: 0px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var gridData = null;
+        $(function () {
+            // ace用法
+            // trigger extension
+            ace.require("ace/ext/language_tools");
+            var editor = ace.edit("aceEditor");
+            editor.session.setMode("ace/mode/sql");
+            editor.setTheme("ace/theme/tomorrow");
+            // enable autocompletion and snippets
+            editor.setOptions({
+                enableBasicAutocompletion: true,
+                enableSnippets: true,
+                enableLiveAutocompletion: false
+            });
+
+
+            gridData = $("#tabData").ligerGrid({
+                allowHideColumn: false,
+                width: '100%',
+                rownumbers: true,
+                height: '300px'
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <table style="width:100%;">
+        <tr>
+            <td style="width:150px">
+                <div id="tabTable">
+
+                </div>
+            </td>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <div style="position:relative; height:260px;">
+                                <pre id="aceEditor"></pre>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding:20px;">
+                            <div id="tabData" style="margin: 0; padding: 0;">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
