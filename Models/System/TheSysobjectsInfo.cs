@@ -1,12 +1,14 @@
 ﻿using PublicClass;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
 namespace Models.System
 {
     [Serializable]
+    [Table("sysobjects")]
     [ModelAttribute("sysobjects", "")]
     public class TheSysobjectsInfo : BaseMODEL
     {

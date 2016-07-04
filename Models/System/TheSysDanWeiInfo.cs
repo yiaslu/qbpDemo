@@ -1,10 +1,13 @@
 
 using System;
 using PublicClass;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
     [Serializable]
+    [Table("Sys_DanWei")]
     [ModelAttribute("Sys_DanWei", "")]
     public class TheSysDanWeiInfo : BaseMODEL
     {
@@ -14,6 +17,7 @@ namespace Models
         /// 单位编号
         /// </summary>
         [ModelAttribute(4,"","单位编号")]
+        [Key]
         public int? dwID
         {
             get { return _dwID; }

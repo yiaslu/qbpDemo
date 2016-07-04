@@ -2,6 +2,7 @@
 using System;
 using PublicClass;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
@@ -16,6 +17,7 @@ namespace Models
         /// 部门编号
         /// </summary>
         [ModelAttribute(4,"","部门编号")]
+        [Key]
         public int? bmID
         {
             get { return _bmID; }

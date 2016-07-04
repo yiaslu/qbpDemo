@@ -1,10 +1,13 @@
 
 using System;
 using PublicClass;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
     [Serializable]
+    [Table("Sys_JueSe_YongHu")]
     [ModelAttribute("Sys_JueSe_YongHu", "")]
     public class TheSysJueSeYongHuInfo : BaseMODEL
     {
@@ -14,6 +17,7 @@ namespace Models
         /// 角色编号
         /// </summary>
         [ModelAttribute(4,"","角色编号")]
+        [Key]
         public int? jsID
         {
             get { return _jsID; }

@@ -1,10 +1,13 @@
 
 using System;
 using PublicClass;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
     [Serializable]
+    [Table("Sys_Flow")]
     [ModelAttribute("Sys_Flow", "")]
     public class TheSysFlowInfo : BaseMODEL
     {
@@ -14,6 +17,7 @@ namespace Models
         /// 流程编号
         /// </summary>
         [ModelAttribute(4,"","流程编号")]
+        [Key]
         public int? flowid
         {
             get { return _flowid; }
