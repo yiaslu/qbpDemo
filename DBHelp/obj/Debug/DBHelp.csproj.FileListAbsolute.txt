@@ -44,3 +44,9 @@ D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\DBHelp.pdb
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DBHelp\obj\Debug\DBHelp.csprojResolveAssemblyReference.cache
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DBHelp\obj\Debug\DBHelp.dll
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DBHelp\obj\Debug\DBHelp.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\DBHelp.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\DBHelp.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DBHelp\obj\Debug\DBHelp.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DBHelp\obj\Debug\DBHelp.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DBHelp\obj\Debug\DBHelp.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\DBHelp.dll.config

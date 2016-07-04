@@ -47,3 +47,16 @@ D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\WinForms\bin\Debug\Newtonsoft.Json.dll
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\WinForms\obj\Debug\WinForms.csprojResolveAssemblyReference.cache
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\WinForms\obj\Debug\WinForms.exe
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\WinForms\obj\Debug\WinForms.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\bin\Debug\WinForms.exe.config
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\bin\Debug\WinForms.exe
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\bin\Debug\WinForms.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\bin\Debug\IrisSkin2.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\bin\Debug\Newtonsoft.Json.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.Login.resources
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.Main.resources
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.Properties.Resources.resources
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.Test.resources
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.csproj.GenerateResource.Cache
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.exe
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\WinForms\obj\Debug\WinForms.pdb

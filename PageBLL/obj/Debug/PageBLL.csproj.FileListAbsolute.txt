@@ -12,3 +12,8 @@ D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\obj\Debug\PageBLL.dll
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\PageBLL\obj\Debug\PageBLL.pdb
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\PageBLL.dll
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\PageBLL.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\PageBLL.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\PageBLL.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\PageBLL\obj\Debug\PageBLL.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\PageBLL\obj\Debug\PageBLL.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\PageBLL\obj\Debug\PageBLL.pdb

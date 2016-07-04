@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{F506AC35-915B-47EA-8AFB-E2EE0E7A67AC}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageUI", "ManageUI\ManageUI.csproj", "{1355A9AA-E447-4744-98A8-94A3FCF5D8C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebConfigForm", "WebConfigForm\WebConfigForm.csproj", "{EB1A75D1-BB39-4B71-BCBC-2BEA1FF61AFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWindow", "TestWindow\TestWindow.csproj", "{E610BC82-502A-4FEF-83AF-E77CED6CABCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,16 @@ Global
 		{EB1A75D1-BB39-4B71-BCBC-2BEA1FF61AFF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{EB1A75D1-BB39-4B71-BCBC-2BEA1FF61AFF}.Release|x86.ActiveCfg = Release|x86
 		{EB1A75D1-BB39-4B71-BCBC-2BEA1FF61AFF}.Release|x86.Build.0 = Release|x86
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,5 +144,6 @@ Global
 		{B9FF0749-A3FB-4633-8DF5-7290921CC622} = {7F1AD854-BFC7-49C2-8AEF-43D14A316F66}
 		{1355A9AA-E447-4744-98A8-94A3FCF5D8C4} = {0AD6AC74-FB1D-47B9-BB7E-088549178A62}
 		{EB1A75D1-BB39-4B71-BCBC-2BEA1FF61AFF} = {EBAD289D-85A2-4457-8CB0-26A048A60EE3}
+		{E610BC82-502A-4FEF-83AF-E77CED6CABCE} = {0AD6AC74-FB1D-47B9-BB7E-088549178A62}
 	EndGlobalSection
 EndGlobal

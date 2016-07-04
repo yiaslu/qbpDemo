@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PublicClass
 {
@@ -11,6 +12,7 @@ namespace PublicClass
     public class BaseMODEL : IMODEL
     {
         protected Dictionary<string, object> ValueList;
+
         protected Byte[] CharSetCount;
         /// <summary>
         /// 为时间戳赋值

@@ -107,39 +107,7 @@ namespace DBHelp
             listDara.Clear();
             return retList;
         }
-        public override object SelectScalar<TKey>(System.Linq.Expressions.Expression<Func<T, TKey>> selectColumn)
-        {
-
-            object obj = null;
-            //using (DbConnection conn = CaertDB())
-            //{
-            //    DbCommand command = conn.CreateCommand();
-            //    command.CommandText = "SELECT [" + selectColumn + "] FROM " + GetTableName(typeof(T)) + " WHERE 1=1 " + WhereStr;
-            //    foreach (DataParameter dtp in listDara)
-            //    {
-            //        DbParameter par = command.CreateParameter();
-            //        par.ParameterName = dtp.Key;
-            //        par.Value = dtp.Value;
-            //        command.Parameters.Add(par);
-            //    }
-            //    try
-            //    {
-            //        obj = command.ExecuteScalar();
-            //    }
-            //    catch (Exception exp)
-            //    {
-            //        throw exp;
-            //    }
-            //    finally
-            //    {
-            //        command.Dispose();
-            //        command = null;
-            //    }
-            //    WhereStr = "";
-            //    listDara.Clear();
-            //}
-            return obj;
-        }
+      
         public override T GetModel(T obj)
         {
             Type type = typeof(T);

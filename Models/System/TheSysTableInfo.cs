@@ -1,10 +1,13 @@
 
 using System;
 using PublicClass;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
     [Serializable]
+    [Table("Sys_Table")]
     [ModelAttribute("Sys_Table", "")]
     public partial class TheSysTableInfo : BaseMODEL
     {
@@ -14,6 +17,7 @@ namespace Models
         /// 表格编号
         /// </summary>
         [ModelAttribute(4,"","表格编号")]
+        [Key]
         public int? tableid
         {
             get { return _tableid; }

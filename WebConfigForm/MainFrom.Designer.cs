@@ -204,7 +204,8 @@
             this.comExecType.FormattingEnabled = true;
             this.comExecType.Items.AddRange(new object[] {
             "MDB",
-            "JSON"});
+            "JSON",
+            "EF"});
             this.comExecType.Location = new System.Drawing.Point(105, 202);
             this.comExecType.Name = "comExecType";
             this.comExecType.Size = new System.Drawing.Size(122, 20);

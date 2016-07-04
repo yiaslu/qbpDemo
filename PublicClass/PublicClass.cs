@@ -279,6 +279,7 @@ namespace PublicClass
             {
                 //object[] list = pinfo.GetCustomAttributes(true).Where(info => info.GetType().Name == "ModelAttribute").ToArray();
                 List<object> list = new List<object>();
+                
                 foreach (var item in pinfo.GetCustomAttributes(true))
                 {
                     if (item.GetType().Name == "ModelAttribute")

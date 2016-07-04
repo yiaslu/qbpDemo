@@ -86,8 +86,6 @@ namespace DBHelp
     {
         List<T> SelectList(string orderbystr);
 
-        object SelectScalar<TKey>(Expression<Func<T, TKey>> selectColumn);
-
         T GetModel(T obj);
         T GetModel(string vID);
     }
@@ -312,9 +310,6 @@ namespace DBHelp
         #endregion
 
         public abstract List<T> SelectList(string orderbystr);
-
-        public abstract object SelectScalar<TKey>(Expression<Func<T, TKey>> selectColumn);
-
 
         public abstract T GetModel(T obj);
 

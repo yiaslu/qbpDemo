@@ -245,8 +245,10 @@ where d.name in (" + strWhere + ") ORDER BY d.name, a.colorder ";
         private string GetMainStr(string type, DataRow row)
         {
             string strProperty = "";
+            bool isKey = false;
             if ((row["主键"] + "") == "√")
             {
+                isKey = true;
                 strProperty = row["长度"] + ",\"" + (row["默认值"] + "").Replace("('", "").Replace("')", "") + "\",\"" + row["说明"] + "\"";
             }
             else
@@ -254,15 +256,18 @@ where d.name in (" + strWhere + ") ORDER BY d.name, a.colorder ";
                 strProperty = row["长度"] + "," + row["小数位数"] + "," + (row["允许空"] + "" == "√" ? "false" : "true") + ",\"" + (row["默认值"] + "").Replace("('", "").Replace("')", "") + "\",\"" + row["说明"] + "\"";
             }
 
-            return (ModelPropertyText.Replace("{type}", type).Replace("{pname}", row["列名"] + "").Replace("{setProperty}", strProperty).Replace("{ms}", row["说明"] + ""));
+            return (ModelPropertyText.Replace("{type}", type).Replace("{pname}", row["列名"] + "").Replace("{setProperty}", strProperty).Replace("{isKey}", (isKey ? "[Key]" : "")).Replace("{ms}", row["说明"] + ""));
         }
         private string ModelText = @"
 using System;
 using PublicClass;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace {namespace}
 {
     [Serializable]
+    [Table({tableName})]
     [ModelAttribute({tableName}, {tableMs})]
     public class {0} : BaseMODEL
     {
@@ -283,6 +288,7 @@ namespace {namespace}
         /// {ms}
         /// </summary>
         [ModelAttribute({setProperty})]
+        {isKey}
         public {type} {pname}
         {
             get { return _{pname}; }

@@ -1,10 +1,12 @@
 
 using System;
 using PublicClass;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
     [Serializable]
+    [Table("Sys_BuMen")]
     [ModelAttribute("Sys_BuMen", "")]
     public class TheSysBuMenInfo : BaseMODEL
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBHelp.DataExecute;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace DBHelp
             {
                 case "MDB": query = new DBQuery<T>(); break;
                 case "JSON": query = new JFQuery<T>(); break;
+                case "EF": query = new EFQuery<T>(); break;
             }
             return query;
         }
@@ -25,6 +27,7 @@ namespace DBHelp
             {
                 case "MDB": exec = new DBExecute(); break;
                 case "JSON": exec = new JFExecute(); break;
+                case "EF": exec = new EFExecute(); break;
             }
             return exec;
         }

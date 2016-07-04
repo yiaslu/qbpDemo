@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using PublicClass;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -31,14 +32,21 @@ namespace DBHelp
             return retList;
         }
 
-        public override object SelectScalar<TKey>(System.Linq.Expressions.Expression<Func<T, TKey>> selectColumn)
-        {
-            return null;
-        }
-
         public override T GetModel(T obj)
         {
-            return null;
+            Type type = typeof(T);
+            PropertyInfo[] p = type.GetProperties();
+            List<KeyBox> kbox = GetKeyList(p, obj);
+
+            var retList = SelectList("").Where(info =>
+                info.GetType().GetProperties().Where(pinfo =>
+                kbox.Where(box => box.Key == pinfo.Name && pinfo.GetValue(info, null) == box.Dbpara.Value).Count() == 1
+                ).Count() == 1
+                ).ToList();
+
+            if (retList.Count == 1)
+                return retList[0];
+            return new T();
         }
     }
 }

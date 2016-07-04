@@ -15,3 +15,8 @@ D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.dll
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\Models\obj\Debug\Models.pdb
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\Models.dll
 D:\YIAS\MyWorkFile\FILE\DEMO\5QBP\DLL\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\DLL\Models.pdb
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\Models\obj\Debug\Models.dll
+D:\YIAS\MyWorkFile\FILE\DEMO\Git\Models\obj\Debug\Models.pdb
