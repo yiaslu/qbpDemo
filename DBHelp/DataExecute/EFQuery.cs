@@ -16,22 +16,28 @@ namespace DBHelp.DataExecute
 {
     public class EFQuery<T> : BaseQuery<T> where T : BaseMODEL, new()
     {
+        static bool isLoad = false;
+
         public EFQuery()
         {
             Load();
         }
-        private static void Load()
+        private void Load()
         {
             if (_dbContext == null)
             {
                 _dbContext = new EFEntities(connStr);
-                var objectContext = ((IObjectContextAdapter)_dbContext).ObjectContext;
-                var mappingCollection = (StorageMappingItemCollection)objectContext.MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
-                mappingCollection.GenerateViews(new List<EdmSchemaError>());
+                if (!isLoad)
+                {
+                    var objectContext = ((IObjectContextAdapter)_dbContext).ObjectContext;
+                    var mappingCollection = (StorageMappingItemCollection)objectContext.MetadataWorkspace.GetItemCollection(DataSpace.CSSpace);
+                    mappingCollection.GenerateViews(new List<EdmSchemaError>());
+                    isLoad = true;
+                }
             }
         }
-        private static DbContext _dbContext = null;
-        private static DbContext dbContext
+        private DbContext _dbContext = null;
+        private DbContext dbContext
         {
             get
             {

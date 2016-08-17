@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/app.js"></script>
+    <script>
+        app.controller('Home', ['$scope', function ($scope) {
+            //, $ionicModal, Authorize, CONFIG, $http, $ionicPopup
+            $scope.GotToPage = function () {
+                $scope.go("login");
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="app">
+    Index
+    <div ng-controller="Home">
+        <button ng-click="GotToPage()">去</button>
+    </div>
+
+
+</body>
+</html>

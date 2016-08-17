@@ -1,0 +1,15 @@
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\SystemBLL.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\SystemBLL.pdb
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\DBHelp.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\Models.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\PublicClass.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\EntityFramework.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\System.Linq.Dynamic.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\Newtonsoft.Json.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\DBHelp.pdb
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\Models.pdb
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\PublicClass.pdb
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\bin\Debug\EntityFramework.xml
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\obj\Debug\SystemBLL.csprojResolveAssemblyReference.cache
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\obj\Debug\SystemBLL.dll
+G:\MyBak\YIAS\MyWorkFile\FILE\DEMO\Git\BLLS\SystemBLL\obj\Debug\SystemBLL.pdb

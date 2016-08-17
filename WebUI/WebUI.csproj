@@ -13,13 +13,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebUI</RootNamespace>
     <AssemblyName>WebUI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +39,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -44,22 +47,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ace\assets\avatars\avatar.png" />
@@ -236,6 +238,7 @@
     <Content Include="assets\css\select2x2.png" />
     <Content Include="assets\execsjs\AjaxBusiness.js" />
     <Content Include="assets\execsjs\pagebase.js" />
+    <Content Include="assets\execsjs\PageMaster.js" />
     <Content Include="assets\execsjs\singlefrm.js" />
     <Content Include="assets\font\fontawesome-webfont.svg" />
     <Content Include="assets\images\gallery\image-1.jpg" />
@@ -312,6 +315,8 @@
     <Content Include="assets\js\vendor\modernizr-2.6.2.min.js" />
     <Content Include="assets\js\x-editable\ace-editable.min.js" />
     <Content Include="assets\js\x-editable\bootstrap-editable.min.js" />
+    <Content Include="assets\js\yias\AjaxBusiness.js" />
+    <Content Include="assets\js\yias\PageMaster.js" />
     <Content Include="assets\src\img\arrow_down.png" />
     <Content Include="assets\src\img\arrow_up.png" />
     <Content Include="assets\src\img\furley_bg.png" />
@@ -325,6 +330,7 @@
     <Content Include="assets\src\mmPaginator.js" />
     <Content Include="assets\src\theme\bootstrap\mmGrid-bootstrap.css" />
     <Content Include="assets\src\theme\bootstrap\mmPaginator-bootstrap.css" />
+    <Content Include="Controllers\login.js" />
     <Content Include="Demos\ace\assets\avatars\avatar.png" />
     <Content Include="Demos\ace\assets\avatars\avatar1.png" />
     <Content Include="Demos\ace\assets\avatars\avatar2.png" />
@@ -457,11 +463,13 @@
     <Content Include="inc\aceFrom.js" />
     <Content Include="inc\aceTable.js" />
     <Content Include="inc\AjaxBusiness.js" />
-    <Content Include="Index.html" />
+    <Content Include="index.html" />
+    <Content Include="Bak\Index_Bak.html" />
+    <Content Include="login.html" />
     <Content Include="Service.asmx" />
-    <Content Include="t2.html" />
-    <Content Include="table.html" />
-    <Content Include="tabletest.html" />
+    <Content Include="Bak\t2.html" />
+    <Content Include="Bak\table.html" />
+    <Content Include="Bak\tabletest.html" />
     <Content Include="Test\img\product\1020EII.jpg" />
     <Content Include="Test\img\product\1020II.jpg" />
     <Content Include="Test\img\product\1050E.jpg" />
@@ -536,6 +544,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLLS\SystemBLL\SystemBLL.csproj">
+      <Project>{db01a9ee-2292-4697-a643-523253f7d481}</Project>
+      <Name>SystemBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBHelp\DBHelp.csproj">
       <Project>{03e6b109-ea31-4cdc-bb95-9cdf4880a102}</Project>
       <Name>DBHelp</Name>

@@ -129,7 +129,8 @@ namespace PublicClass
         }
         public object Send()
         {
-            Assembly assembly = Assembly.LoadFrom(System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + (PublicClass.UIClassName == "FrmUIBase" ? "" : @"\bin") + @"\" + this["BusinessName"] + ".dll");
+            string dllStr = (System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + (PublicClass.UIClassName == "FrmUIBase" ? "" : @"\bin") + @"\" + this["BusinessName"] + ".dll").Replace("\\\\", "\\");
+            Assembly assembly = Assembly.LoadFrom(dllStr);
             Type type = assembly.GetType(this["typeName"]);
             object obj = assembly.CreateInstance(type.FullName, true);
             if (this["types"] == "Method")

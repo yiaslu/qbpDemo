@@ -1,9 +1,12 @@
-﻿using PublicClass;
+﻿using Models;
+using PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Web;
+using System.Web.SessionState;
 
 namespace DBHelp
 {
@@ -11,6 +14,13 @@ namespace DBHelp
     {
         protected BaseQuery<T> query = ConfigClass<T>.GetQuery();
         protected IExecute exec = ConfigClass<T>.GetExecute();
+
+        public SysUserInfo UserInfo
+        {
+            get { return HttpContext.Current.Session["UserInfo"] as SysUserInfo; }
+            set { HttpContext.Current.Session["UserInfo"] = value; }
+        }
+
         public virtual List<T> GetListAll()
         {
             try

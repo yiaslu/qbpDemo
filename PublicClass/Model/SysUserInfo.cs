@@ -28,6 +28,13 @@ namespace Models
             get { return _Roles; }
             set { _Roles = value; }
         }
+        private List<TheSysCaiDanInfo> _CaiDans;
+
+        public List<TheSysCaiDanInfo> CaiDans
+        {
+            get { return _CaiDans; }
+            set { _CaiDans = value; }
+        }
     }
     [Serializable]
     public class SysUserRole

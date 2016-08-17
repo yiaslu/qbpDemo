@@ -55,6 +55,7 @@
     <Compile Include="IUIHelp.cs" />
     <Compile Include="ModelKey.cs" />
     <Compile Include="Model\IMODEL.cs" />
+    <Compile Include="Model\SysModel\TheSysCaiDanInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicClass.cs" />
     <Compile Include="Model\SysUserInfo.cs" />
