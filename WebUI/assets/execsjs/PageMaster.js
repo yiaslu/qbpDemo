@@ -9,7 +9,8 @@ var headHTML = "<link href='/assets/css/bootstrap.min.css' rel='stylesheet' type
                "<script src='/assets/js/bootstrap.min.js' type='text/javascript'></script>" +
                "<script src='/assets/js/ace-elements.min.js' type='text/javascript'></script>" +
                "<script src='/assets/js/assets/js/ace.min.js' type='text/javascript'></script>" +
-               "<script src='/assets/execsjs/AjaxBusiness.js' type='text/javascript'></script>";
+               "<script src='/assets/execsjs/AjaxBusiness.js' type='text/javascript'></script>" +
+               "<script src='/assets/execsjs/basehelp.js' type='text/javascript'></script>";
 var ListScript = "";
 
 var EditScript = "";

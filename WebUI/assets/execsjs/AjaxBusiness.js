@@ -61,7 +61,7 @@ function DBSendRequest(typeName, Method, BusinessName, types) {
             success: function (rea) {
                 if (rea.d == "UserLoginTimeOut") {
                     alert("您的登陆已超时，请重新登陆！");
-                    window.top.location = "/login.htm";
+                    window.top.location = "/login.html";
                     return;
                 }
                 var func = eval(DBResponse);
@@ -74,7 +74,11 @@ function DBSendRequest(typeName, Method, BusinessName, types) {
                 } else {
                     obj = eval('(' + result.responseText + ')')
                 }
-                alert(obj.Message);
+                if (obj.Message == "UserLoginTimeOut") {
+                    alert("您的登陆已超时，请重新登陆！");
+                    window.top.location = "/login.html";
+                } else
+                    alert(obj.Message);
             }
         });           //ajax end 
     }

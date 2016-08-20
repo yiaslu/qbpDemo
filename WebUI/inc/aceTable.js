@@ -1,11 +1,11 @@
 ﻿
 function Cols(width, title, titleHtml, name, align, render) {
     var col = {
-        width: (width ? width : 'auto'),
+        width: (width ? width + "px" : 'auto'),
         title: (title ? title : ''),
         titleHtml: titleHtml,
         name: name,
-        align: (align ? align : 'center'),
+        align: (align ? align : 'left'),
         renderer: render,
         cols: []
     };
@@ -15,7 +15,7 @@ function aceTable(divid) {
     var aceTable = {
         id: divid
            , width: 'auto'
-           //, height: '280px'
+        //, height: '280px'
            , cols: []
            , name: "" //当前对象的变量名
         //, url: false
@@ -97,7 +97,7 @@ function aceTable(divid) {
         }
 
         for (var i = 0; i < this.cols.length; i++) {
-            var set = " style='text-align:" + this.cols[i].align + ";width:" + this.cols[i].width + ";'";
+            var set = " style='text-align:center;width:" + this.cols[i].width + ";'";
             var titles = this.cols[i].titleHtml ? this.cols[i].titleHtml : this.cols[i].title;
             heads += thead.replace("{set}", set).replace("{HEAD}", titles);
         }
@@ -118,22 +118,31 @@ function aceTable(divid) {
     }
     aceTable._getExec = function (jsonstr) {
         var retHTML = "";
+        var ycHTML = "";
         if (this._showExec()) {
             retHTML = "<div class='hidden-phone visible-desktop btn-group'>";
+            var ycHTML = "<div class='hidden-desktop visible-phone'><div class='inline position-relative'><button class='btn btn-minier btn-yellow dropdown-toggle' data-toggle='dropdown'><i class='icon-caret-down icon-only bigger-120'></i></button><ul class='dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close'>";
+
             if (this.itemget != null) {
                 retHTML += "<button class='btn btn-mini btn-' onclick='" + this.name + ".itemget(this)' ><i class='icon-zoom-in bigger-120'></i></button>";
+                ycHTML += "<li><a href='#' class='tooltip-info' data-rel='tooltip' title='View' onclick='" + this.name + ".itemget(this.parentNode.parentNode.parentNode)'><span class='blue'><i class='icon-zoom-in bigger-120'></i></span></a></li>";
             }
             if (this.itemupdate != null) {
                 retHTML += "<button class='btn btn-mini btn-success' onclick='" + this.name + ".itemupdate(this)'><i class='icon-edit bigger-120'></i></button>";
+                ycHTML += "<li><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit' onclick='" + this.name + ".itemupdate(this.parentNode.parentNode.parentNode)'><span class='green'><i class='icon-edit bigger-120'></i></span></a></li>";
             }
             if (this.itemdelete != null) {
                 retHTML += "<button class='btn btn-mini btn-danger' onclick='" + this.name + ".itemdelete(this)'><i class='icon-trash bigger-120'></i></button>";
+                ycHTML += "<li><a href='#' class='tooltip-error' data-rel='tooltip' title='Delete' onclick='" + this.name + ".itemdelete(this.parentNode.parentNode.parentNode)'><span class='red'><i class='icon-trash bigger-120'></i></span></a></li>";
             }
 
             retHTML += "</div>";
+            ycHTML += "</ul></div></div>";
         }
-        return retHTML;
+        return (retHTML + ycHTML);
     }
+
+
     //绑定数据
     aceTable.DataBind = function () {
         if (this.items.length != 0) {
@@ -159,7 +168,7 @@ function aceTable(divid) {
                 if (j == 0) {
                     coltext = "<input type='hidden' value=\"" + this._itemToString(this.items[i]) + "\" />" + coltext;
                 }
-                cols += "<td>" + coltext + "</td>";
+                cols += "<td style='text-align:" + this.cols[j].align + "'>" + coltext + "</td>";
             }
 
             //显示操作列

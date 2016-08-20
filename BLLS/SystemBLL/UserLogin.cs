@@ -18,10 +18,15 @@ namespace SystemBLL
             var list = query.SelectList("");
             if (list.Count == 1)
             {
-                UserInfo = new SysUserInfo();
-                UserInfo.UserID = list[0].yhID + "";
-                UserInfo.UserName = list[0].yhName + "";
-                UserInfo.CaiDans = new CaiDan().GetUserCaiDan(list[0].yhID.Value);
+                var User = new SysUserInfo();
+                User.UserID = list[0].yhID + "";
+                User.UserName = list[0].yhName + "";
+                User.CaiDans = new CaiDan().GetUserCaiDan(list[0].yhID.Value);
+                TheSysYongHuInfo yh = new TheSysYongHuInfo();
+                yh.yhID = list[0].yhID;
+                yh.yhLastLgoinTime = DateTime.Now;
+                Update(yh);
+                SetUserInfo(User);
                 return true;
             }
             return false;

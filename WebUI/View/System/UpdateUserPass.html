@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="/assets/execsjs/PageMaster.js"></script>
+    <script>
+        GetHTMLHead();
+    </script>
+    <script src="/Controllers/System/user.js"></script>
+    <style>
+        body {
+            border: none;
+            padding-top: 20px;
+        }
+
+        .control-label {
+            font-size: 15px;
+            width: 130px;
+            height: 40px;
+            line-height: 40px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <content>
+        <table style="width:100%;">
+            <tr>
+                <td class="control-label">原密码：</td>
+                <td class="controls">
+                    <input type="password" id="yMM" style="width:80%;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="control-label">新密码：</td>
+                <td class="controls">
+                    <input type="text" id="nMM" style="width:80%;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="control-label">确认新密码：</td>
+                <td class="controls">
+                    <input type="text" id="nnMM" style="width:80%;" />
+                </td>
+            </tr>
+        </table>
+    </content>
+    <footer class="site-footer" style="text-align:center;">
+        <button class="btn" onclick="SavePass('yMM','nMM','nnMM');">保存</button>
+        <button class="btn" onclick="window.top.CloseDialog();">关闭</button>
+    </footer>
+</body>
+</html>

@@ -17,8 +17,19 @@ namespace DBHelp
 
         public SysUserInfo UserInfo
         {
-            get { return HttpContext.Current.Session["UserInfo"] as SysUserInfo; }
-            set { HttpContext.Current.Session["UserInfo"] = value; }
+            get
+            {
+                if (HttpContext.Current.Session["UserInfo"] == null)
+                {
+                    throw new Exception("UserLoginTimeOut");
+                }
+                return HttpContext.Current.Session["UserInfo"] as SysUserInfo;
+            }
+        }
+
+        public void SetUserInfo(SysUserInfo info)
+        {
+            HttpContext.Current.Session["UserInfo"] = info;
         }
 
         public virtual List<T> GetListAll()
