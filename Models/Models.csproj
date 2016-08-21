@@ -51,6 +51,7 @@
     <Compile Include="System\TheSysFlowInfo.cs" />
     <Compile Include="System\TheSysFlowlineInfo.cs" />
     <Compile Include="System\TheSysFlownodesInfo.cs" />
+    <Compile Include="System\TheSysJueSeCaiDanInfo.cs" />
     <Compile Include="System\TheSysJueSeInfo.cs" />
     <Compile Include="System\TheSysJueSeYongHuInfo.cs" />
     <Compile Include="System\TheSysobjectsInfo.cs" />

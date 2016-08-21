@@ -80,6 +80,7 @@
     <Content Include="assets\css\bootstrap-editable.css" />
     <Content Include="assets\css\bootstrap-responsive.min.css" />
     <Content Include="assets\css\bootstrap-timepicker.css" />
+    <Content Include="assets\css\bootstrap-treeview.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\chosen-sprite%402x.png" />
     <Content Include="assets\css\chosen-sprite.png" />
@@ -108,6 +109,7 @@
     <Content Include="assets\css\select2.css" />
     <Content Include="assets\css\select2.png" />
     <Content Include="assets\css\select2x2.png" />
+    <Content Include="assets\css\style.css" />
     <Content Include="assets\execsjs\AjaxBusiness.js" />
     <Content Include="assets\execsjs\basehelp.js" />
     <Content Include="assets\execsjs\pagebase.js" />
@@ -140,6 +142,7 @@
     <Content Include="assets\js\bootbox.min.js" />
     <Content Include="assets\js\bootstrap-colorpicker.min.js" />
     <Content Include="assets\js\bootstrap-tag.min.js" />
+    <Content Include="assets\js\bootstrap-treeview.js" />
     <Content Include="assets\js\bootstrap-wysiwyg.min.js" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\chosen.jquery.min.js" />
@@ -209,6 +212,7 @@
     <Content Include="Bak\tabletest.html" />
     <Content Include="Controllers\index.js" />
     <Content Include="Controllers\login.js" />
+    <Content Include="Controllers\System\role.js" />
     <Content Include="Controllers\System\user.js" />
     <Content Include="fromtest.html" />
     <Content Include="inc\aceFrom.js" />
@@ -258,6 +262,10 @@
     <Content Include="Test\js\jsPlumb-2.0.6.js" />
     <Content Include="Test\t1.html" />
     <Content Include="Test\连线.html" />
+    <Content Include="View\System\RoleEdit.html" />
+    <Content Include="View\System\RoleList.html" />
+    <Content Include="View\System\RoleSet.html" />
+    <Content Include="View\System\test.html" />
     <Content Include="View\System\UpdateUserPass.html" />
     <Content Include="View\System\UserEdit.html" />
     <Content Include="View\System\UserList.html" />

@@ -130,6 +130,7 @@ namespace PublicClass
         public object Send()
         {
             string dllStr = (System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + (PublicClass.UIClassName == "FrmUIBase" ? "" : @"\bin") + @"\" + this["BusinessName"] + ".dll").Replace("\\\\", "\\");
+            Assembly modela = Assembly.LoadFrom((System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + (PublicClass.UIClassName == "FrmUIBase" ? "" : @"\bin") + @"\Models.dll").Replace("\\\\", "\\"));
             Assembly assembly = Assembly.LoadFrom(dllStr);
             Type type = assembly.GetType(this["typeName"]);
             object obj = assembly.CreateInstance(type.FullName, true);
@@ -171,6 +172,34 @@ namespace PublicClass
                             }
                         }
                         objs[i] = Convert.ChangeType(info, tType);
+                    }
+                    else if (tType.Name == "List`1")
+                    {
+                        object ojblist = Activator.CreateInstance(tType);
+                        string strItem = tType.FullName.Replace("System.Collections.Generic.List`1[[", "");
+                        JArray arr = JArray.Parse(this[paramsInfo[i].Name]);
+                        Type modType = modela.GetType((strItem.Substring(0, strItem.IndexOf(','))));
+                        foreach (JToken item in arr)
+                        {
+                            JObject jsonmodel = item.Value<JObject>();
+
+                            object itemobj = modType.Assembly.CreateInstance(modType.FullName, true);
+
+                            foreach (PropertyInfo propInfo in modType.GetProperties())
+                            {
+                                foreach (var jpropInfo in jsonmodel)
+                                {
+                                    if (propInfo.Name == jpropInfo.Key)
+                                    {
+                                        if (!string.IsNullOrEmpty(jpropInfo.Value + ""))
+                                            propInfo.SetValue(itemobj, GetMainValue(propInfo, jpropInfo.Value), null);
+                                        break;
+                                    }
+                                }
+                            }
+                            ojblist.GetType().GetMethod("Add").Invoke(ojblist, new Object[] { itemobj });
+                        }
+                        objs[i] = Convert.ChangeType(ojblist, tType);
                     }
                 }
                 try

@@ -8,8 +8,8 @@ function GetUserInfo() {
     return __UserInfo;
 }
 
-var dhMb = "<li class='active'>" +
-           "   <a href='[URL]' target='mainpage'>" +
+var dhMb = "<li>" +
+           "   <a href='[URL]' target='mainpage' onclick='aSelect(this,2);'>" +
            "       <i class='[img]'></i>" +
            "       [name]" +
            "   </a>" +
@@ -21,6 +21,19 @@ var dhFMb = "<a href='#' class='dropdown-toggle'>" +
             "   <b class='arrow icon-angle-down'></b>" +
             "</a>";
 
+function aSelect(a, num) {
+    var lilist = null;
+    if (num == 1)
+        lilist = a.parentNode.parentNode.getElementsByTagName("li");
+    else
+        lilist = a.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("li");
+
+    for (var i = 0; i < lilist.length; i++) {
+        if (a.parentNode != lilist[i])
+            lilist[i].className = "";
+    }
+    a.parentNode.className = "active";
+}
 var nowDialog = {
     nDialog: null,
     nWin: null,

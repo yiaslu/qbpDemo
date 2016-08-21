@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="/assets/execsjs/PageMaster.js"></script>
+    <script>
+        GetHTMLHead();
+    </script>
+    <script src="/Controllers/System/role.js"></script>
+    <style>
+    </style>
+</head>
+<body onload="setLoad();" class="formBody">
+    <content>
+        <table style="width:100%;">
+            <tr>
+                <td class="control-label vtop">角色权限：</td>
+                <td class="controls vtop">
+                    <ul class="nav" id="ulnav"></ul>
+                </td>
+            </tr>
+        </table>
+    </content>
+    <footer class="site-footer" style="text-align:center;">
+        <button class="btn" onclick="SaveTree();">保存</button>
+        <button class="btn" onclick="window.top.CloseDialog();">关闭</button>
+    </footer>
+</body>
+</html>

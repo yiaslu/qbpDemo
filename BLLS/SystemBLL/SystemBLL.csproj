@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="CaiDan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysJueSe.cs" />
+    <Compile Include="SysJueSeCaiDan.cs" />
+    <Compile Include="SysJueSeYongHu.cs" />
     <Compile Include="SysUser.cs" />
     <Compile Include="SysYongHu.cs" />
     <Compile Include="UserLogin.cs" />

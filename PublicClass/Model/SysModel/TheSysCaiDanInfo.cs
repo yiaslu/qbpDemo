@@ -30,6 +30,7 @@ namespace Models
         /// 菜单名称
         /// </summary>
         [ModelAttribute(50,0,false,"","菜单名称")]
+        
         public string cdName
         {
             get { return _cdName; }
@@ -42,6 +43,7 @@ namespace Models
         /// 菜单地址
         /// </summary>
         [ModelAttribute(100,0,false,"","菜单地址")]
+        
         public string cdURL
         {
             get { return _cdURL; }
@@ -53,7 +55,8 @@ namespace Models
         /// <summary>
         /// 菜单图片
         /// </summary>
-        [ModelAttribute(20,0,false,"","菜单图片")]
+        [ModelAttribute(50,0,false,"","菜单图片")]
+        
         public string cdImg
         {
             get { return _cdImg; }
@@ -66,10 +69,24 @@ namespace Models
         /// 父级菜单编号
         /// </summary>
         [ModelAttribute(4,0,false,"","父级菜单编号")]
+        
         public int? cdPID
         {
             get { return _cdPID; }
             set { _cdPID = value; }
+        }
+
+
+        private int? _cdXh;
+        /// <summary>
+        /// 
+        /// </summary>
+        [ModelAttribute(4,0,false,"","")]
+        
+        public int? cdXh
+        {
+            get { return _cdXh; }
+            set { _cdXh = value; }
         }
 
 
@@ -78,7 +95,7 @@ namespace Models
         /// </summary>
         public enum QueryItem
         {
-           cdID , cdName , cdURL , cdImg , cdPID 
+           cdID , cdName , cdURL , cdImg , cdPID , cdXh 
         }
     }
 }

@@ -7,34 +7,34 @@ using System.ComponentModel.DataAnnotations;
 namespace Models
 {
     [Serializable]
-    [Table("Sys_JueSe_YongHu")]
-    [ModelAttribute("Sys_JueSe_YongHu", "")]
-    public class TheSysJueSeYongHuInfo : BaseMODEL
+    [Table("Sys_JueSe_CaiDan")]
+    [ModelAttribute("Sys_JueSe_CaiDan", "")]
+    public class TheSysJueSeCaiDanInfo : BaseMODEL
     {
         
-        private int? _jsID;
+        private int? _JsID;
         /// <summary>
         /// 
         /// </summary>
         [ModelAttribute(4,"","")]
         [Key]
-        public int? jsID
+        public int? JsID
         {
-            get { return _jsID; }
-            set { _jsID = value; }
+            get { return _JsID; }
+            set { _JsID = value; }
         }
 
 
-        private int? _yhID;
+        private int? _cdID;
         /// <summary>
         /// 
         /// </summary>
         [ModelAttribute(4,"","")]
         [Key]
-        public int? yhID
+        public int? cdID
         {
-            get { return _yhID; }
-            set { _yhID = value; }
+            get { return _cdID; }
+            set { _cdID = value; }
         }
 
 
@@ -43,7 +43,7 @@ namespace Models
         /// </summary>
         public enum QueryItem
         {
-           jsID , yhID 
+           JsID , cdID 
         }
     }
 }

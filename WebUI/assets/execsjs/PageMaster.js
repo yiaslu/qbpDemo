@@ -5,6 +5,7 @@ var headHTML = "<link href='/assets/css/bootstrap.min.css' rel='stylesheet' type
                "<link href='/assets/css/ace.min.css' rel='stylesheet' type='text/css' />" +
                "<link href='/assets/css/ace-responsive.min.css' rel='stylesheet' type='text/css' />" +
                "<link href='/assets/css/ace-skins.min.css' rel='stylesheet' type='text/css' />" +
+               "<link href='/assets/css/style.css' rel='stylesheet' type='text/css' />" +
                "<script src='/assets/js/jquery-2.0.3.min.js' type='text/javascript'></script>" +
                "<script src='/assets/js/bootstrap.min.js' type='text/javascript'></script>" +
                "<script src='/assets/js/ace-elements.min.js' type='text/javascript'></script>" +

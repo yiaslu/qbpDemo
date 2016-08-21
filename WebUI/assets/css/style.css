@@ -1,0 +1,27 @@
+﻿
+.formBody {
+    border: none;
+    padding-top: 20px;
+}
+
+    .formBody .control-label {
+        font-size: 15px;
+        width: 130px;
+        height: 40px;
+        line-height: 40px;
+        text-align: right;
+    }
+
+    .formBody .vtop {
+        vertical-align: top;
+    }
+
+    .formBody .controls input[type=checkbox], .formBody .controls input[type=radio] {
+        opacity: 1;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .formBody .menu-text {
+        font-size: 16px;
+    }

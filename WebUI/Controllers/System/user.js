@@ -61,12 +61,49 @@ function Get() {
     request.add("vID", yhID);
     request.send(function (ret) {
         nowUser = ret.d;
-        if (ret.d.yhID)
+        if (ret.d.yhID) {
             document.getElementById("yhLoginName").disabled = true;
+            SetRole(yhID);
+        }
         _setPage();
     });
 }
 
+function SetRole(yhID) {
+    document.getElementById("tdYhjs").innerHTML = "用户角色：";
+
+    var request = new DBRequest("SystemBLL.SysJueSe", "GetListAll", "SystemBLL");
+    var strHTML = "";
+    request.send(function (ret) {
+        for (var i = 0; i < ret.d.length; i++) {
+            strHTML += "<div>" + ret.d[i].jsName + "<input type='checkbox' value='" + ret.d[i].jsID + "' /></div>";
+        }
+        document.getElementById("tdYhjsbox").innerHTML = strHTML;
+        request = new DBRequest("SystemBLL.SysJueSeYongHu", "GetListJsByYongHu", "SystemBLL");
+        request.add("yhID", yhID);
+        request.send(function (rd) {
+            var inputs = document.getElementById("tdYhjsbox").getElementsByTagName("input");
+            for (var i = 0; i < rd.d.length; i++) {
+                for (var j = 0; j < inputs.length; j++) {
+                    if (inputs[j].type == "checkbox" && inputs[j].value == rd.d[i].jsID) {
+                        inputs[j].checked = true;
+                    }
+                }
+            }
+        });
+    });
+}
+
+function GetRole(yhID) {
+    var list = [];
+    var inputs = document.getElementById("tdYhjsbox").getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].type == "checkbox" && inputs[i].checked) {
+            list.push({ jsID: inputs[i].value, yhID: yhID });
+        }
+    }
+    return list;
+}
 function _setPage() {
     document.getElementById("yhName").value = nowUser.yhName;
     document.getElementById("yhLoginName").value = nowUser.yhLoginName;
@@ -86,7 +123,15 @@ function Save() {
         request = new DBRequest("SystemBLL.SysYongHu", "Update", "SystemBLL");
     request.add("info", nowUser);
     request.send(function (ret) {
-        window.top.CloseDialog();
+        if (nowUser.yhID) {
+            var list = GetRole(nowUser.yhID);
+            request = new DBRequest("SystemBLL.SysJueSeYongHu", "SaveJsYongHu", "SystemBLL");
+            request.add("list", list);
+            request.send(function () {
+                window.top.CloseDialog();
+            });
+        } else
+            window.top.CloseDialog();
     });
 
 }
