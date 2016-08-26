@@ -13,6 +13,44 @@ using PublicClass;
 
 namespace DBHelp
 {
+
+    public class DBQuery : PublicClass.PublicClass
+    {
+        public static DataTable SelDataTable(string sql, List<DataParameter> listDara)
+        {
+            DataTable dt = new DataTable();
+            using (DbConnection conn = CaertDB())
+            {
+                DbCommand command = conn.CreateCommand();
+                command.CommandText = sql;
+                foreach (DataParameter dtp in listDara)
+                {
+                    DbParameter par = command.CreateParameter();
+                    par.ParameterName = dtp.Key;
+                    par.Value = dtp.Value;
+                    command.Parameters.Add(par);
+                }
+                try
+                {
+                    DbDataAdapter da = CaertAdapter(command);
+                    da.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+                    da.Fill(dt);
+                    dt.ExtendedProperties.Add("SQL", sql);
+                }
+                catch (Exception exp)
+                {
+                    throw exp;
+                }
+                finally
+                {
+                    command.Dispose();
+                    command = null;
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+    }
     public class DBQuery<T> : BaseQuery<T> where T : BaseMODEL, new()
     {
         #region 私有方法
@@ -107,7 +145,7 @@ namespace DBHelp
             listDara.Clear();
             return retList;
         }
-      
+
         public override T GetModel(T obj)
         {
             Type type = typeof(T);

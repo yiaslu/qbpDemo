@@ -1,8 +1,11 @@
 ﻿using DBHelp;
 using Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -83,6 +86,7 @@ namespace PageBLL
         #endregion
 
         #region 操作数据列
+
         public List<TheSysTableColumnInfo> GetListColumn(string tableid, string oname)
         {
             try
@@ -355,6 +359,143 @@ namespace PageBLL
                 default: reString = (length == "0" || length == "" ? type : string.Format("{0}({1})", type, length)); break;
             }
             return reString;
+        }
+        #endregion
+
+
+        #region 页面操作
+
+        public List<TheSysTableColumnInfo> GetTableColumn(string tableid)
+        {
+            try
+            {
+                List<TheSysTableColumnInfo> retList = new List<TheSysTableColumnInfo>();
+                TheSysTableInfo info = Get(tableid);
+                if (!string.IsNullOrEmpty(info.tablecolumns))
+                {
+                    retList = JsonConvert.DeserializeObject<List<TheSysTableColumnInfo>>(info.tablecolumns).Where(iem => iem.isdelete == false).ToList();
+                }
+                return retList.OrderBy(item => item.order).ToList();
+            }
+            catch (Exception exp)
+            {
+                throw new Exception(exp.Message);
+            }
+        }
+
+        public ArrayList GetBindTable(string tableid)
+        {
+            try
+            {
+                TheSysTableInfo info = Get(tableid);
+
+                string sqlStr = "SELECT * FROM " + info.tablecode;
+
+                List<DataParameter> listPara = new List<DataParameter>();
+
+                var table = DBQuery.SelDataTable(sqlStr, listPara);
+
+                return DataTableToJsonList(table);
+            }
+            catch (Exception exp)
+            {
+                throw new Exception(exp.Message);
+            }
+        }
+        public void InsertTable(string tableid, string jsoninfo)
+        {
+            JObject info = (JObject)JsonConvert.DeserializeObject(jsoninfo);
+            try
+            {
+                List<DataParameter> listPara = new List<DataParameter>();
+                TheSysTableInfo table = Get(tableid);
+
+                string col = "", colval = "";
+                int j = 0;
+                foreach (var item in info)
+                {
+                    col += (j != 0 ? "," : "") + item.Key;
+                    colval += (j != 0 ? "," : "") + "@" + item.Key;
+                    listPara.Add(new DataParameter("@" + item.Key, item.Value + ""));
+                    j++;
+                }
+                string sqlStr = "INSERT INTO " + table.tablecode + " (" + col + ") VALUES(" + colval + ")";
+                exec.ExecuteSQL(sqlStr, listPara);
+                exec.DBCommit();
+            }
+            catch (Exception exp)
+            {
+                throw new Exception(exp.Message);
+            }
+
+        }
+        public void UpdateTable(string tableid, string jsoninfo)
+        {
+            JObject info = (JObject)JsonConvert.DeserializeObject(jsoninfo);
+            try
+            {
+                if (!string.IsNullOrEmpty(info["tid"] + ""))
+                {
+                    List<DataParameter> listPara = new List<DataParameter>();
+                    TheSysTableInfo table = Get(tableid);
+
+                    string colval = "";
+                    int j = 0;
+                    foreach (var item in info)
+                    {
+                        if (item.Key != "tid")
+                        {
+                            colval += (j != 0 ? "," : "") + item.Key + "=@" + item.Key;
+                            listPara.Add(new DataParameter("@" + item.Key, item.Value + ""));
+                            j++;
+                        }
+                    }
+                    listPara.Add(new DataParameter("@tid", (info["tid"] + "")));
+                    string sqlStr = "UPDATE " + table.tablecode + " SET " + colval + " WHERE tid=@tid";
+                    exec.ExecuteSQL(sqlStr, listPara);
+                    exec.DBCommit();
+                }
+            }
+            catch (Exception exp)
+            {
+                throw new Exception(exp.Message);
+            }
+        }
+
+        public void DeleteTable(string tableid, string tid)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(tid))
+                {
+                    List<DataParameter> listPara = new List<DataParameter>();
+                    TheSysTableInfo table = Get(tableid);
+                    listPara.Add(new DataParameter("@tid", tid));
+                    string sqlStr = "DELETE " + table.tablecode + " WHERE tid=@tid";
+                    exec.ExecuteSQL(sqlStr, listPara);
+                    exec.DBCommit();
+                }
+            }
+            catch (Exception exp)
+            {
+                throw new Exception(exp.Message);
+            }
+        }
+
+        private ArrayList DataTableToJsonList(DataTable dt)
+        {
+            ArrayList arrayList = new ArrayList();
+            foreach (DataRow dataRow in dt.Rows)
+            {
+                Dictionary<string, object> dictionary = new Dictionary<string, object>();  //实例化一个参数集合
+                foreach (DataColumn dataColumn in dt.Columns)
+                {
+                    dictionary.Add(dataColumn.ColumnName, (dataRow[dataColumn.ColumnName] + ""));
+                }
+                arrayList.Add(dictionary); //ArrayList集合中添加键值
+            }
+
+            return arrayList;  //返回一个json字符串
         }
         #endregion
     }

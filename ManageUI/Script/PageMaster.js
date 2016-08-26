@@ -1,4 +1,4 @@
-﻿var configFileName = "license127.crconfig";
+﻿var configFileName = "license.crconfig";
 var headHTML = "<link href='/lib/ligerUI/skins/Aqua/css/ligerui-all.css' rel='stylesheet' type='text/css' />" +
                "<link href='/lib/ligerUI/skins/ligerui-icons.css' rel='stylesheet' type='text/css' />" +
                "<link href='/lib/ligerUI/skins/Gray/css/all.css' rel='stylesheet' type='text/css' />" +
@@ -18,7 +18,7 @@ var EditScript = "<script src='/lib/ligerUI/js/core/base.js' type='text/javascri
                  "<script src='/lib/jquery-validation/jquery.metadata.js' type='text/javascript'></script>" +
                  "<script src='/lib/jquery-validation/messages_cn.js' type='text/javascript'></script>";
 function SetConfig() {
-    configFileName = "license127.crconfig";
+    configFileName = "license.crconfig";
 }
 //导入js
 function GetHTMLHead() {

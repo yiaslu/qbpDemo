@@ -27,17 +27,26 @@ function aceFrom(divid) {
         id: divid
         , cols: []
         , colsval: null
-        , colindex: 2
+        , colindex: 1
         , loadErrorText: '数据加载出现异常'
     };
     var formexecJS = "";
-    var controlGroup = '<div class="control-group">' +
-                       '    <label class="control-label">[lbl]</label>' +
-                       '    <div class="controls">' +
+    var controlGroup = '<td class="control-label">' +
+                       '    [lbl]' +
+                       '</td>' +
+                       '<td class="controls">' +
                        '        [control]' +
                        '       <span class="help-inline" id="help_[field]"></span>' +
-                       '   </div>' +
-                       '</div>';
+                       '</td>';
+
+
+    //'<div class="control-group">' +
+    //'    <label class="control-label">[lbl]</label>' +
+    //'    <div class="controls">' +
+    //'        [control]' +
+    //'       <span class="help-inline" id="help_[field]"></span>' +
+    //'   </div>' +
+    //'</div>';
     //初始化form 
     aceFrom.initCreate = function () {
         var fromHTML = this._initFrom();
@@ -46,23 +55,23 @@ function aceFrom(divid) {
     }
     //创建表单
     aceFrom._initFrom = function () {
-        var fromhtm = '<fieldset><legend>基础数据</legend>';
+        var fromhtm = '<table>';
         var issetfoot = false;
         for (var i = 0; i < this.cols.length; i++) {
             issetfoot = false;
             if (i % this.colindex == 0 && i != 0) {
                 issetfoot = true;
-                fromhtm += '</div>';
+                fromhtm += '</tr>';
             }
             if (i % this.colindex == 0) {
-                fromhtm += '<div class="row-fluid">';
+                fromhtm += '<tr>';
             }
-            fromhtm += '<div class="span' + parseInt(10 / this.colindex) + '">';
+            //fromhtm += '<td class="span' + parseInt(10 / this.colindex) + '">';
             fromhtm += controlGroup.replace("[lbl]", this.cols[i].lbl).replace("[control]", this._GetControlHTML(this.cols[i])).replace("[field]", this.cols[i].field);
-            fromhtm += '</div>';
+            //fromhtm += '</td>';
         }
         if (!issetfoot) {
-            fromhtm += '</div></fieldset>';
+            fromhtm += '</tr></table>';
         }
         return fromhtm;
     }
@@ -128,6 +137,88 @@ function aceFrom(divid) {
                 ; break;
         }
         return retHTML;
+    }
+
+    aceFrom._SetControlValue = function (col, value) {
+        switch (col.type) {
+            case contType.text:
+            case contType.pwd:
+            case contType.imgtxt:
+            case contType.tref:
+
+            case contType.textmod:
+            case contType.select:
+                document.getElementById('col_' + col.field).value = value;
+                ; break;
+            case contType.date:
+                document.getElementById('col_' + col.field).value = FormatDate(value);
+                ; break;
+            case contType.check:
+            case contType.radio:
+                if (col.seldata != null && col.seldata != '' && col.seldata.length != 0) {
+                    var data = col.seldata.split('|');
+                    for (var i = 0; i < data.length; i++) {
+                        if (value.indexOf(data[i]))
+                            document.getElementById("col_" + col.field + "_" + i).checked = true;
+                        else
+                            document.getElementById("col_" + col.field + "_" + i).checked = false;
+                    }
+                }
+                ; break;
+        }
+    }
+    aceFrom._GetControlValue = function (col) {
+        var value = "";
+        switch (col.type) {
+            case contType.text:
+            case contType.pwd:
+            case contType.imgtxt:
+            case contType.tref:
+            case contType.date:
+            case contType.textmod:
+            case contType.select:
+                value = document.getElementById('col_' + col.field).value;
+                ; break;
+            case contType.check:
+            case contType.radio:
+                if (col.seldata != null && col.seldata != '' && col.seldata.length != 0) {
+                    var data = col.seldata.split('|');
+                    var val = "", j = 0;
+                    for (var i = 0; i < data.length; i++) {
+                        if (document.getElementById("col_" + col.field + "_" + i).checked) {
+                            val = (j == 0 ? "" : "，") + document.getElementById("col_" + col.field + "_" + i).value;
+                            j++;
+                        }
+                    }
+                    value = val;
+                }
+                ; break;
+        }
+        return value;
+    }
+
+
+
+    aceFrom.SetControlValue = function (info) {
+        for (var item in info) {
+            for (var i = 0; i < this.cols.length; i++) {
+                if (this.cols[i].field == item) {
+                    this._SetControlValue(this.cols[i], info[item]);
+                }
+            }
+        }
+    }
+    aceFrom.GetControlValue = function () {
+        var info = {};
+        for (var i = 0; i < this.cols.length; i++) {
+            info[this.cols[i].field] = this._GetControlValue(this.cols[i]);
+        }
+        return info;
+    }
+    aceFrom.CleanControl = function () {
+        for (var i = 0; i < this.cols.length; i++) {
+            this._SetControlValue(this.cols[i], "");
+        }
     }
     //绑定数据
     aceFrom.DataBind = function () {

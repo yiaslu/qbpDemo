@@ -1,4 +1,4 @@
-﻿var configFileName = "license127.crconfig";
+﻿var configFileName = "license.crconfig";
 function RequestXMl() {
     var xml = "";
     var requsetobj = { "type": "json" };

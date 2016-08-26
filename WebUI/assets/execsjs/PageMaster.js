@@ -10,6 +10,10 @@ var headHTML = "<link href='/assets/css/bootstrap.min.css' rel='stylesheet' type
                "<script src='/assets/js/bootstrap.min.js' type='text/javascript'></script>" +
                "<script src='/assets/js/ace-elements.min.js' type='text/javascript'></script>" +
                "<script src='/assets/js/assets/js/ace.min.js' type='text/javascript'></script>" +
+               "<script src='/assets/js/date-time/bootstrap-datepicker.min.js' type='text/javascript'></script>" +
+               "<script src='/assets/js/date-time/bootstrap-timepicker.min.js' type='text/javascript'></script>" +
+               "<script src='/assets/js/date-time/moment.min.js' type='text/javascript'></script>" +
+               "<script src='/assets/js/date-time/daterangepicker.min.js' type='text/javascript'></script>" +
                "<script src='/assets/execsjs/AjaxBusiness.js' type='text/javascript'></script>" +
                "<script src='/assets/execsjs/basehelp.js' type='text/javascript'></script>";
 var ListScript = "";
@@ -81,4 +85,20 @@ function TextToHTML(textStr) {
             rettextStr = rettextStr.replace("[-|-]", '"');
         }
     return rettextStr;
+}
+function StringToDate(s) {
+    var d = new Date();
+    d.setYear(parseInt(s.substring(0, 4), 10));
+    d.setMonth(parseInt(s.substring(5, 7) - 1, 10));
+    d.setDate(parseInt(s.substring(8, 10), 10));
+    return d;
+}
+function FormatDate(strTime) {
+    var date = StringToDate((strTime.replace("上午", "").replace("下午", "")));
+    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+}
+function getSortFun(order, sortBy) {
+    var ordAlpah = (order == 'asc') ? '>' : '<';
+    var sortFun = new Function('a', 'b', 'return a.' + sortBy + ordAlpah + 'b.' + sortBy + '?1:-1');
+    return sortFun;
 }

@@ -1,7 +1,7 @@
 ﻿
 .formBody {
     border: none;
-    padding-top: 20px;
+    background-color: transparent;
 }
 
     .formBody .control-label {
@@ -25,3 +25,19 @@
     .formBody .menu-text {
         font-size: 16px;
     }
+
+    .formBody .modal {
+        left: 0;
+        top: 0;
+        right: 0;
+    }
+
+.MainBody .modal-body {
+    max-height: initial;
+    overflow: hidden;
+    padding: 0;
+}
+
+.MainBody .modal {
+    width: 600px;
+}

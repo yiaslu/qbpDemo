@@ -74,11 +74,11 @@ function DBSendRequest(typeName, Method, BusinessName, types) {
                 } else {
                     obj = eval('(' + result.responseText + ')')
                 }
-                if (obj.Message == "UserLoginTimeOut") {
+                if (obj.Message == "UserLoginTimeOut" || obj.Message == "处理请求时出错。") {
                     alert("您的登陆已超时，请重新登陆！");
                     window.top.location = "/login.html";
                 } else
-                    alert(obj.Message);
+                    alert("错误：" + obj.Message);
             }
         });           //ajax end 
     }

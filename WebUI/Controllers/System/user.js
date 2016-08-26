@@ -46,7 +46,7 @@ function BindTable() {
 function OpenUserEdit(id) {
     window.top.OpenDialog("用户编辑", "View/System/UserEdit.html?id=" + id, window, function () {
         BindTable();
-    });
+    }, 400);
 }
 //List-End
 

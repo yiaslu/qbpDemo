@@ -147,6 +147,9 @@ function aceTable(divid) {
     aceTable.DataBind = function () {
         if (this.items.length != 0) {
             document.getElementById("table" + this.id).getElementsByTagName('tbody')[0].innerHTML = "";
+        } else {
+            document.getElementById("table" + this.id).getElementsByTagName('tbody')[0].innerHTML = "<tr><td colspan='" + (this.cols.length + (this.checkCol ? 1 : 0) + (this.indexCol ? 1 : 0) + (this._showExec() ? 1 : 0)) + "' style='color:red;text-align:center;line-height:80px;'>" + this.noDataText + "</td></tr>";
+            return;
         }
         var rows = "";
         for (var i = 0; i < this.items.length; i++) {

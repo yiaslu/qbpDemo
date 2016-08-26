@@ -217,8 +217,8 @@
     <Content Include="fromtest.html" />
     <Content Include="inc\aceFrom.js" />
     <Content Include="inc\aceTable.js" />
-    <Content Include="inc\AjaxBusiness.js" />
     <Content Include="inc\Authorization.js" />
+    <Content Include="inc\YiasOnePage.js" />
     <Content Include="index.html" />
     <Content Include="login.html" />
     <Content Include="MainPage.html" />
@@ -262,6 +262,7 @@
     <Content Include="Test\js\jsPlumb-2.0.6.js" />
     <Content Include="Test\t1.html" />
     <Content Include="Test\连线.html" />
+    <Content Include="View\Basics\ProductList.html" />
     <Content Include="View\System\RoleEdit.html" />
     <Content Include="View\System\RoleList.html" />
     <Content Include="View\System\RoleSet.html" />

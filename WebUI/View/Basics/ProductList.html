@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <script src="/assets/execsjs/PageMaster.js"></script>
+    <script>
+        GetHTMLHead();
+    </script>
+    <script src="/inc/aceTable.js"></script>
+    <script src="/inc/aceFrom.js"></script>
+    <script src="/inc/YiasOnePage.js"></script>
+    <script>
+        var yias = new ObjPageSet("yias");
+        yias.tableid = 7;
+        yias.tabledivid = "table";
+    </script>
+</head>
+<body onload="yias.LoadPage();">
+    <header style="height:70px;">
+        <div class="navbar navbar-fixed-top">
+            <div class="breadcrumbs" id="headbuttons" style="padding-left:100px;">
+                <button class="btn btn-app btn-mini" onclick="yias.Insert();">
+                    <i class="icon-lock bigger-160"></i>
+                    添加
+                </button>
+            </div>
+        </div>
+    </header>
+    <content>
+        <div id="table"></div>
+        <div id="my-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="smaller lighter blue no-margin">货品编辑</h3>
+                    </div>
+
+                    <div class="modal-body" id="from">
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn" onclick="yias.Save();">保存</button>
+                        <button class="btn" data-dismiss="modal">关闭</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+    </content>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿
 var namepa = "SystemBLL.SysJueSe";
 var dllname = "SystemBLL";
-
+var heig = 280;
 var tTable = null;
 
 
@@ -13,7 +13,7 @@ function CreateTable() {
     tTable.name = "tTable";
     tTable.itemget = function (btn) {
         var item = tTable.GetItemByBtn(btn);
-        window.top.OpenDialog("角色编辑", "View/System/RoleSet.html?id=" + item.jsID, window, null);
+        window.top.OpenDialog("角色编辑", "View/System/RoleSet.html?id=" + item.jsID, window, null, 405);
     }
 
     tTable.itemupdate = function (btn) {
@@ -48,7 +48,7 @@ function BindTable() {
 function OpenUserEdit(id) {
     window.top.OpenDialog("角色编辑", "View/System/RoleEdit.html?id=" + id, window, function () {
         BindTable();
-    });
+    }, heig);
 }
 
 //List-End
